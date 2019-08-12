@@ -6,54 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".accelerom">
 
-    <LinearLayout
-        android:layout_width="302dp"
-        android:layout_height="636dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="26dp">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
-
-        <TextView
-            android:id="@+id/x_x"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#B08EEC"
-            android:text="TextView"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/x_y"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#CDDC39"
-            android:text="TextView"
-            android:textAlignment="center" />
-
-        <TextView
-            android:id="@+id/x_z"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00BCD4"
-            android:text="TextView"
-            android:textAlignment="center" />
-    </LinearLayout>
-
-    <EditText
-        android:id="@+id/x_tv_accel"
+    <TextView
+        android:id="@+id/x_y"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#EC8AFD"
-        android:backgroundTint="#E67070"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Accelerometer Live Data "
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginTop="18dp"
+        android:background="#CDDC39"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/x_x"
+        app:layout_constraintTop_toBottomOf="@+id/x_x" />
+
+    <TextView
+        android:id="@+id/x_x"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="96dp"
+        android:background="#B08EEC"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/x_z"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="#00BCD4"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="@+id/x_y"
+        app:layout_constraintTop_toBottomOf="@+id/x_y" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
