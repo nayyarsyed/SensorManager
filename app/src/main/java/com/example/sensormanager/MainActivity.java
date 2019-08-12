@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -47,6 +48,21 @@ public class MainActivity extends AppCompatActivity {
                 android.R.id.text1, liststring
         );
         jlv.setAdapter(adapter);
+
+        Button jbt ;
+
+        jbt = (Button) findViewById(R.id.xbt);
+        jbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, accelerom.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
 
 
     }
