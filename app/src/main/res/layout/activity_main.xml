@@ -13,11 +13,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="23dp"
         android:background="#3E90EFF8"
         app:layout_constraintBottom_toTopOf="@+id/xbt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -27,11 +26,22 @@
         android:id="@+id/xbt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="16dp"
         android:text="Accelerometer demo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/x_tv_sensorcount"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/xlv" />
+
+    <TextView
+        android:id="@+id/x_tv_sensorcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xbt"
+        tools:text="Count " />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

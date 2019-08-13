@@ -21,49 +21,41 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private SensorManager sm;
+    TextView sensorcount ;
     ListView jlv;
     List<Sensor> jlsr;
-    String aa;
     List<String> liststring ;
     ArrayAdapter<String> adapter ;
-    Intent j_acc_intnt ;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       setContentView(R.layout.activity_main);
-        sm=(SensorManager) getSystemService(SENSOR_SERVICE);
+            setContentView(R.layout.activity_main);
+            sm=(SensorManager) getSystemService(SENSOR_SERVICE);
+            jlv = (ListView)findViewById(R.id.xlv);
+            sensorcount = (TextView)findViewById(R.id.x_tv_sensorcount);
+            liststring = new ArrayList<String>();
+            jlsr = sm.getSensorList(Sensor.TYPE_ALL);
+            Integer a = jlsr.size();
+            sensorcount.setText("Total number(s) of sensors found : "+ jlsr.size());
 
-        jlv = (ListView)findViewById(R.id.xlv);
-        liststring = new ArrayList<String>();
-        jlsr = sm.getSensorList(Sensor.TYPE_ALL);
 
-        for(int i=0; i<jlsr.size(); i++){
-           // liststring.add(jlsr.get(i).getName());
-            liststring.add(jlsr.get(i).getName());
-            Log.d("Pint",liststring.toString());
-        }
-        adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1, liststring
-        );
-        jlv.setAdapter(adapter);
-
-        Button jbt ;
-
-        jbt = (Button) findViewById(R.id.xbt);
-        jbt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, accelerom.class);
-                startActivity(intent);
-
+            for(int i=0; i<jlsr.size(); i++){
+                liststring.add(jlsr.get(i).getName());
             }
+            adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.activity_list_item,android.R.id.text1, liststring);
+            jlv.setAdapter(adapter);
+
+            Button jbt ;
+
+            jbt = (Button) findViewById(R.id.xbt);
+            jbt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, accelerom.class);
+                    startActivity(intent);
+
+                }
         });
-
-
-
-
-
     }
 }
