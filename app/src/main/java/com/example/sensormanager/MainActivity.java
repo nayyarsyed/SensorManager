@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
             liststring = new ArrayList<String>();
             jlsr = sm.getSensorList(Sensor.TYPE_ALL);
             Integer a = jlsr.size();
-            sensorcount.setText("Total number(s) of sensors found : "+ jlsr.size());
+            sensorcount.setText("Total Sensor(s) found : "+ jlsr.size());
 
 
             for(int i=0; i<jlsr.size(); i++){
