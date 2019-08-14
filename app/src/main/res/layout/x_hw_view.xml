@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hardware information of this mobile:"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/x_hw_tv"
+        android:layout_width="match_parent"
+        android:layout_height="532dp"
+        android:background="#66E2B6F5"
+        android:clickable="false"
+        android:editable="false"
+        android:ellipsize="end"
+        android:enabled="true"
+        android:fadeScrollbars="true"
+        android:fontFamily="sans-serif"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="12sp"
+        android:visibility="visible"
+        tools:visibility="visible">
+
+
+    </TextView>
+
+</LinearLayout>
