@@ -1,15 +1,10 @@
 package com.example.sensormanager;
 
+import android.app.ActivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.List;
 
 public class hw extends AppCompatActivity {
 
@@ -18,6 +13,13 @@ public class hw extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.x_hw_view);
         TextView j_hw_tv = (TextView)findViewById(R.id.x_hw_tv);
+        ActivityManager actManager = (ActivityManager) hw.this.getSystemService(hw.this.ACTIVITY_SERVICE);
+        ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
+        actManager.getMemoryInfo(memInfo);
+        long totalMemory = memInfo.totalMem;
+
+
+
         String details = "VERSION.RELEASE : " + Build.VERSION.RELEASE
                 + "\nVERSION.INCREMENTAL : " + Build.VERSION.INCREMENTAL
                 + "\nVERSION.SDK.NUMBER : " + Build.VERSION.SDK_INT
@@ -32,13 +34,11 @@ public class hw extends AppCompatActivity {
                 + "\nMANUFACTURER : " + Build.MANUFACTURER
                 + "\nMODEL : " + Build.MODEL
                 + "\nPRODUCT : " + Build.PRODUCT
-                + "\nSERIAL : " + Build.SERIAL
                 + "\nTAGS : " + Build.TAGS
                 + "\nTIME : " + Build.TIME
                 + "\nTYPE : " + Build.TYPE
-                + "\nUNKNOWN : " + Build.UNKNOWN
+                + "\nTotal Memory : " + totalMemory + " Bytes"
                 + "\nUSER : " + Build.USER;
-
                 j_hw_tv.setText(details);
     }
 

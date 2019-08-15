@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,33 +21,36 @@ public class MainActivity extends AppCompatActivity {
     TextView sensorcount ;
     ListView jlv;
     List<Sensor> jlsr;
-    List<String> liststring ;
+    ArrayList<String> liststring ;
     ArrayAdapter<String> adapter ;
     Button jbt ;
     Button jbt_hw;
 
 
-
-        @Override
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
             setContentView(R.layout.activity_main);
             sm=(SensorManager) getSystemService(SENSOR_SERVICE);
+
+
             jlv = (ListView)findViewById(R.id.xlv);
             jbt = (Button) findViewById(R.id.xbt);
             jbt_hw = ( Button) findViewById(R.id.x_hw_btn);
             sensorcount = (TextView)findViewById(R.id.x_tv_sensorcount);
             liststring = new ArrayList<String>();
+
             jlsr = sm.getSensorList(Sensor.TYPE_ALL);
-            Integer a = jlsr.size();
             sensorcount.setText("Total Sensor(s) found : "+ jlsr.size());
-            adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.activity_list_item,android.R.id.text1, liststring);
+
+            adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,android.R.id.text1, liststring);
             jlv.setAdapter(adapter);
 
                 for(int i=0; i<jlsr.size(); i++){
 
                     liststring.add(jlsr.get(i).getName());
+                    Log.d("liststrnig",jlsr.get(i).getName());
                 }
 
                 jbt.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+
+
 
 
         }
