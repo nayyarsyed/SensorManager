@@ -14,7 +14,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="20dp"
-        android:background="#D2FDF932"
+        android:background="#6CECF8"
         app:layout_constraintBottom_toTopOf="@+id/x_hw_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
