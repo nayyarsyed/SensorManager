@@ -36,6 +36,7 @@ public class accelerom extends AppCompatActivity implements SensorEventListener 
             public void onClick(View view) {
                 String statusSwitch1;
                 if (simpleSwitch1.isChecked()) {
+
                     sensormanager.registerListener(accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
                     Toast.makeText(accelerom.this, "Accelerometer Started", Toast.LENGTH_SHORT).show();
                 }

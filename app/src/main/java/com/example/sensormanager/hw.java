@@ -1,9 +1,14 @@
 package com.example.sensormanager;
 
 import android.app.ActivityManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class hw extends AppCompatActivity {
@@ -11,7 +16,8 @@ public class hw extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.x_hw_view);
+
+                setContentView(R.layout.x_hw_view);
         TextView j_hw_tv = (TextView)findViewById(R.id.x_hw_tv);
         ActivityManager actManager = (ActivityManager) hw.this.getSystemService(hw.this.ACTIVITY_SERVICE);
         ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
