@@ -50,21 +50,35 @@ public class MainActivity extends AppCompatActivity {
             adapter = new ArrayAdapter<String>(MainActivity.this,R.layout.customrow_listview,
                     R.id.textView2, liststring);
             jlv.setAdapter(adapter);
+                
+        if ((jlsr.size() != 0)) {
+            // block of code to be executed if the condition is true
+            for (int i = 0; i < jlsr.size(); i++) {
 
-                for(int i=0; i<jlsr.size(); i++){
+                liststring.add( "# " + (i + 1) + " " + jlsr.get( i ).getName() );
+                //   Log.d("liststrnig",jlsr.get(i).getName());
+            }
 
-                    liststring.add("# " + (i+1) + " " + jlsr.get(i).getName() );
-                 //   Log.d("liststrnig",jlsr.get(i).getName());
+            jlv.setOnItemClickListener( new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int k, long l) {
+
+                    Toast.makeText( MainActivity.this, "Item" + jlsr.get( k ).getName() +
+                            "Long" + l, Toast.LENGTH_SHORT ).show();
                 }
+            } );
+            
+        } else {
+            // block of code to be executed if the condition is false
+            Toast.makeText( this, "No Sensor Found ", Toast.LENGTH_SHORT ).show();
+ 
+         }
 
-                jlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int k, long l) {
+        
 
-                        Toast.makeText(MainActivity.this, "Item"+ jlsr.get(k).getName() +
-                                "Long"+l, Toast.LENGTH_SHORT).show();
-                    }
-                });
+
+            
+
 
                 jbt.setOnClickListener(new View.OnClickListener() {
                 @Override

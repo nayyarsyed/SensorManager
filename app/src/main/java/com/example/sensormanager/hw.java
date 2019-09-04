@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.Console;
+import java.text.DecimalFormat;
+import java.text.Format;
+
 public class hw extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +27,9 @@ public class hw extends AppCompatActivity {
         ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
         actManager.getMemoryInfo(memInfo);
         long totalMemory = memInfo.totalMem;
-
-
+        //totalMemory  = totalMemory/1000000000;
+       // DecimalFormat decimalFormat = new DecimalFormat("#.####");
+//        long totalMemoryf = Long.valueOf(decimalFormat.format(totalMemory));
 
         String details = "VERSION.RELEASE : " + Build.VERSION.RELEASE
                 + "\nVERSION.INCREMENTAL : " + Build.VERSION.INCREMENTAL
@@ -43,7 +48,7 @@ public class hw extends AppCompatActivity {
                 + "\nTAGS : " + Build.TAGS
                 + "\nTIME : " + Build.TIME
                 + "\nTYPE : " + Build.TYPE
-                + "\nTotal Memory : " + totalMemory + " Bytes"
+                + "\nTotal Memory : " +  totalMemory + " Bytes"
                 + "\nUSER : " + Build.USER;
                 j_hw_tv.setText(details);
     }

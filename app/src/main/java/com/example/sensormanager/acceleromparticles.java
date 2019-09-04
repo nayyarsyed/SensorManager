@@ -16,14 +16,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.text.Layout;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Display;
+import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -35,12 +40,12 @@ public class acceleromparticles extends Activity {
     private WindowManager mWindowManager;
     private Display mDisplay;
     private WakeLock mWakeLock;
+    public int  ui = 1 ;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Get an instance of the SensorManager
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -58,6 +63,7 @@ public class acceleromparticles extends Activity {
         mSimulationView = new SimulationView(this);
         mSimulationView.setBackgroundResource(R.drawable.wood);
         setContentView(mSimulationView);
+
     }
 
     @Override
@@ -72,9 +78,12 @@ public class acceleromparticles extends Activity {
 
         // Start the simulation
         mSimulationView.startSimulation();
-        mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
+
+        //  mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
 
     }
+
+
 
     @Override
     protected void onPause() {
@@ -86,7 +95,6 @@ public class acceleromparticles extends Activity {
 
         // Stop the simulation
         mSimulationView.stopSimulation();
-
         // and release our wake-lock
         // mWakeLock.release();
     }
@@ -118,69 +126,83 @@ public class acceleromparticles extends Activity {
          * acceleration. for added realism each particle has its own friction
          * coefficient.
          */
-        class Particle extends View {
-            private float mPosX = (float) Math.random();
-            private float mPosY = (float) Math.random();
-            private float mVelX;
-            private float mVelY;
-
-            public Particle(Context context) {
-                super(context);
-            }
-
-            public Particle(Context context, AttributeSet attrs) {
-                super(context, attrs);
-            }
-
-            public Particle(Context context, AttributeSet attrs, int defStyleAttr) {
-                super(context, attrs, defStyleAttr);
-            }
-
-            public Particle(Context context, AttributeSet attrs, int defStyleAttr,
-                            int defStyleRes) {
-                super(context, attrs, defStyleAttr, defStyleRes);
-            }
-
-            public void computePhysics(float sx, float sy, float dT) {
-
-                final float ax = -sx/35;  //viscosity changes
-                final float ay = -sy/35;
-
-                mPosX += mVelX * dT + ax * dT * dT ; //original /2
-                mPosY += mVelY * dT + ay * dT * dT ;
-
-                mVelX += ax * dT;
-                mVelY += ay * dT;
-            }
 
 
-            public void resolveCollisionWithBounds() {
-                final float xmax = mHorizontalBound;
-                final float ymax = mVerticalBound;
-                final float x = mPosX;
-                final float y = mPosY;
-                if (x > xmax) {
-                    mPosX = xmax;
-                    mVelX = 0;
-                } else if (x < -xmax) {
-                    mPosX = -xmax;
-                    mVelX = 0;
+
+            class Particle extends View {
+                private float mPosX = (float) Math.random();
+                private float mPosY = (float) Math.random();
+                private float mVelX;
+                private float mVelY;
+                public int ui = 1;
+
+
+             /*   Layout lay = parentLayo.findViewById(R.id.);
+                TextView tv = new TextView(this);
+                tv.setText("New textview");
+                lay.addView(view); */
+
+                public Particle(Context context) {
+                    super(context);
+
+                //    if (ui ==1)
+                //    Toast.makeText( acceleromparticles.this, "Please move your mobile phone", Toast.LENGTH_LONG ).show();
+                //    ui=0;
                 }
-                if (y > ymax) {
-                    mPosY = ymax;
-                    mVelY = 0;
-                } else if (y < -ymax) {
-                    mPosY = -ymax;
-                    mVelY = 0;
+
+                public Particle(Context context, AttributeSet attrs) {
+                    super(context, attrs);
+                }
+
+                public Particle(Context context, AttributeSet attrs, int defStyleAttr) {
+                    super(context, attrs, defStyleAttr);
+                }
+
+                public Particle(Context context, AttributeSet attrs, int defStyleAttr,
+                                int defStyleRes) {
+                    super(context, attrs, defStyleAttr, defStyleRes);
+                }
+
+                public void computePhysics(float sx, float sy, float dT) {
+
+                    final float ax = -sx/35;  //viscosity changes
+                    final float ay = -sy/35;
+
+                    mPosX += mVelX * dT + ax * dT * dT ; //original /2
+                    mPosY += mVelY * dT + ay * dT * dT ;
+
+                    mVelX += ax * dT;
+                    mVelY += ay * dT;
+                }
+
+
+                public void resolveCollisionWithBounds() {
+                    final float xmax = mHorizontalBound;
+                    final float ymax = mVerticalBound;
+                    final float x = mPosX;
+                    final float y = mPosY;
+                    if (x > xmax) {
+                        mPosX = xmax;
+                        mVelX = 0;
+                    } else if (x < -xmax) {
+                        mPosX = -xmax;
+                        mVelX = 0;
+                    }
+                    if (y > ymax) {
+                        mPosY = ymax;
+                        mVelY = 0;
+                    } else if (y < -ymax) {
+                        mPosY = -ymax;
+                        mVelY = 0;
+                    }
                 }
             }
-        }
 
         /*
          * A particle system is just a collection of particles
          */
         class ParticleSystem {
-            static final int NUM_PARTICLES = 400;
+            static final int NUM_PARTICLES = 1;
             private Particle mBalls[] = new Particle[NUM_PARTICLES];
 
             ParticleSystem() {
@@ -189,15 +211,19 @@ public class acceleromparticles extends Activity {
                  */
                 for (int i = 0; i < mBalls.length; i++) {
                     mBalls[i] = new Particle(getContext());
-                    mBalls[i].setBackgroundResource(R.drawable.a);
+                    mBalls[i].setBackgroundResource(R.drawable.ball);
 
 
                     mBalls[i].setLayerType(LAYER_TYPE_HARDWARE, null);
+
                     addView(mBalls[i], new ViewGroup.LayoutParams(mDstWidth, mDstHeight));
                 }
 
 
             }
+
+
+
 
             /*
              * Update the position of each particle in the system using the
@@ -293,27 +319,34 @@ public class acceleromparticles extends Activity {
              * CPU resources.
              */
             mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
+
+
         }
 
         public void stopSimulation() {
             mSensorManager.unregisterListener(this);
+            Toast.makeText( getApplicationContext(), "Accelerometer disnegaged", Toast.LENGTH_SHORT ).show();
+
         }
 
         public SimulationView(Context context) {
             super(context);
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
+
+
             DisplayMetrics metrics = new DisplayMetrics();
             getWindow().setFlags(
                     WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
                     WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
             mXDpi = metrics.xdpi;
             mYDpi = metrics.ydpi;
 
             //this will reduce the size of the ball oroginal was 0.0254 changed t 0.0854
-            mMetersToPixelsX = mXDpi / 0.0254f;
-            mMetersToPixelsY = mYDpi / 0.0254f;
+            mMetersToPixelsX = mXDpi / 0.00154f;
+            mMetersToPixelsY = mYDpi / 0.00154f;
 
             // rescale the ball so it's about 0.5 cm on screen
             mDstWidth = (int) (sBallDiameter * mMetersToPixelsX * 0.5f);
@@ -388,6 +421,7 @@ public class acceleromparticles extends Activity {
             final float xs = mMetersToPixelsX;
             final float ys = mMetersToPixelsY;
             final int count = particleSystem.getParticleCount();
+
             for (int i = 0; i < count; i++) {
                 /*
                  * We transform the canvas so that the coordinate system matches
