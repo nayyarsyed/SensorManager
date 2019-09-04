@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
             sensorcount.setText("Total Sensor(s) found : "+ jlsr.size());
 
-            adapter = new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,
-                    android.R.id.text1, liststring);
+            adapter = new ArrayAdapter<String>(MainActivity.this,R.layout.customrow_listview,
+                    R.id.textView2, liststring);
             jlv.setAdapter(adapter);
 
                 for(int i=0; i<jlsr.size(); i++){
 
-                    liststring.add("# " + i + " " + jlsr.get(i).getName() );
+                    liststring.add("# " + (i+1) + " " + jlsr.get(i).getName() );
                  //   Log.d("liststrnig",jlsr.get(i).getName());
                 }
 
