@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int k, long l) {
 
-                    Toast.makeText( MainActivity.this, "Item" + jlsr.get( k ).getName() +
-                            "Long" + l, Toast.LENGTH_SHORT ).show();
+                  //  Toast.makeText( MainActivity.this, "Item" + jlsr.get( k ).getName() +
+                  //          "Long" + l, Toast.LENGTH_SHORT ).show();
                 }
             } );
             
