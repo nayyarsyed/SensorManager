@@ -27,6 +27,14 @@ public class hw extends AppCompatActivity {
         ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
         actManager.getMemoryInfo(memInfo);
         long totalMemory = memInfo.totalMem;
+        long availableMemory = memInfo.availMem;
+
+        long convertbytes_to_gb = 1073741824;
+        double totalMemory_in_gb = ((double)totalMemory/convertbytes_to_gb);
+        String formated_total_memory = String.format("%.2f", totalMemory_in_gb);
+
+        double availableMemory_in_gb = ((double)availableMemory/convertbytes_to_gb);
+        String formated_avl_mem = String.format("%.2f", availableMemory_in_gb);
         //totalMemory  = totalMemory/1000000000;
        // DecimalFormat decimalFormat = new DecimalFormat("#.####");
 //        long totalMemoryf = Long.valueOf(decimalFormat.format(totalMemory));
@@ -48,7 +56,8 @@ public class hw extends AppCompatActivity {
                 + "\nTAGS : " + Build.TAGS
                 + "\nTIME : " + Build.TIME
                 + "\nTYPE : " + Build.TYPE
-                + "\nTotal Memory : " +  totalMemory + " Bytes"
+                + "\nTotal Memory : " +  formated_total_memory + " Gb"
+                + "\nAvailable Memory : " +  formated_avl_mem + " Gb"
                 + "\nUSER : " + Build.USER;
                 j_hw_tv.setText(details);
     }

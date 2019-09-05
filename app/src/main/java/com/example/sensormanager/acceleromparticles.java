@@ -325,7 +325,7 @@ public class acceleromparticles extends Activity {
 
         public void stopSimulation() {
             mSensorManager.unregisterListener(this);
-            Toast.makeText( getApplicationContext(), "Accelerometer disnegaged", Toast.LENGTH_SHORT ).show();
+            Toast.makeText( getApplicationContext(), "Accelerometer Disengaged", Toast.LENGTH_SHORT ).show();
 
         }
 
