@@ -26,7 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
         android:text="Accelerometer demo"
         app:layout_constraintEnd_toStartOf="@+id/x_hw_btn"
         app:layout_constraintStart_toStartOf="parent"
