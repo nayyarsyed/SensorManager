@@ -4,35 +4,74 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Hardware information of this mobile:"
         android:textAlignment="viewStart"
+        android:textColor="#03A9F4"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/x_hw_tv"
-        android:layout_width="match_parent"
-        android:layout_height="409dp"
-        android:background="#66E2B6F5"
+        android:layout_width="400dp"
+        android:layout_height="231dp"
+        android:background="#66FFFFFF"
         android:clickable="false"
         android:editable="false"
         android:ellipsize="end"
         android:enabled="true"
         android:fadeScrollbars="true"
         android:fontFamily="sans-serif"
+        android:isScrollContainer="true"
+        android:overScrollMode="always"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
         android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="12sp"
+        android:textSize="14sp"
+        android:verticalScrollbarPosition="defaultPosition"
         android:visibility="visible"
         tools:visibility="visible">
 
 
     </TextView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CPU Information"
+        android:textColor="#F44336"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="400dp"
+        android:layout_height="314dp">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cpu"
+                android:layout_width="391dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="false"
+                android:layout_centerHorizontal="false"
+                android:gravity="left"
+                android:text="CPU Information Display Here"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </LinearLayout>
