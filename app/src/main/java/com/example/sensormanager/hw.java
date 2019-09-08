@@ -22,18 +22,6 @@ public class hw extends AppCompatActivity {
         setContentView(R.layout.x_hw_view);
         TextView j_hw_tv = findViewById(R.id.x_hw_tv);
 
-
-        ActivityManager actManager = (ActivityManager) hw.this.getSystemService(hw.this.ACTIVITY_SERVICE);
-        ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
-        actManager.getMemoryInfo(memInfo);
-        long totalMemory = memInfo.totalMem;
-        long availableMemory = memInfo.availMem;
-        long convertbytes_to_gb = 1073741824;
-        double totalMemory_in_gb = ((double)totalMemory/convertbytes_to_gb);
-        String formated_total_memory = String.format("%.2f", totalMemory_in_gb);
-        double availableMemory_in_gb = ((double)availableMemory/convertbytes_to_gb);
-        String formated_avl_mem = String.format("%.2f", availableMemory_in_gb);
-
         GsmCellLocation a = new GsmCellLocation();
         int abc = a.getLac();
         Log.d( "rer", String.valueOf( abc ) );
@@ -50,13 +38,9 @@ public class hw extends AppCompatActivity {
 
         try{
             processBuilder = new ProcessBuilder(DATA);
-
             process = processBuilder.start();
-
             inputStream = process.getInputStream();
-
             while(inputStream.read(byteArry) != -1){
-
                 Holder = Holder + new String(byteArry);
             }
 
@@ -68,10 +52,7 @@ public class hw extends AppCompatActivity {
         }
 
         cpu.setText(Holder);
-
-
         // hardware build information string building
-
         String details = "VERSION.RELEASE : " + Build.VERSION.RELEASE
                 + "\nVERSION.INCREMENTAL : " + Build.VERSION.INCREMENTAL
                 + "\nVERSION.SDK.NUMBER : " + Build.VERSION.SDK_INT
@@ -89,8 +70,6 @@ public class hw extends AppCompatActivity {
                // + "\nTags : " + Build.TAGS
                 + "\nTIME : " + Build.TIME
                 + "\nTYPE : " + Build.TYPE
-                + "\nTotal Memory : " +  formated_total_memory + " Gb"
-                + "\nAvailable Memory : " +  formated_avl_mem + " Gb"
                 + "\nUSER : " + Build.USER;
                 j_hw_tv.setText(details);
     }
