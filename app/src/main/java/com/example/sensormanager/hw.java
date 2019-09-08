@@ -3,6 +3,8 @@ package com.example.sensormanager;
 import android.app.ActivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CpuUsageInfo;
+import android.os.HardwarePropertiesManager;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 import android.widget.TextView;
