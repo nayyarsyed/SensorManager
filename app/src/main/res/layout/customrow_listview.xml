@@ -7,8 +7,10 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E22ED1FA"
+        android:background="#D500F9"
         android:text="TextView"
+        android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#FFFFFF" />
+        android:textColor="#FFFFFF"
+        android:textStyle="bold" />
 </LinearLayout>
