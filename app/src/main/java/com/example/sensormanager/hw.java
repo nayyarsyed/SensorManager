@@ -3,12 +3,10 @@ package com.example.sensormanager;
 import android.app.ActivityManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -36,7 +34,9 @@ public class hw extends AppCompatActivity {
         double availableMemory_in_gb = ((double)availableMemory/convertbytes_to_gb);
         String formated_avl_mem = String.format("%.2f", availableMemory_in_gb);
 
-
+        GsmCellLocation a = new GsmCellLocation();
+        int abc = a.getLac();
+        Log.d( "rer", String.valueOf( abc ) );
         // Cpu information string building
         TextView cpu ;
         ProcessBuilder processBuilder;
