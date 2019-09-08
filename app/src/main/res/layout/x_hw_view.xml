@@ -5,63 +5,78 @@
     android:layout_height="match_parent">
 
 
-    <TextView
-        android:id="@+id/textView"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hardware information of this mobile:"
-        android:textAlignment="viewStart"
-        android:textColor="#03A9F4"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="271dp">
 
-    <TextView
-        android:id="@+id/x_hw_tv"
-        android:layout_width="400dp"
-        android:layout_height="231dp"
-        android:background="#66FFFFFF"
-        android:clickable="false"
-        android:editable="false"
-        android:ellipsize="end"
-        android:enabled="true"
-        android:fadeScrollbars="true"
-        android:fontFamily="sans-serif"
-        android:isScrollContainer="true"
-        android:overScrollMode="always"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:textAlignment="viewStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="14sp"
-        android:verticalScrollbarPosition="defaultPosition"
-        android:visibility="visible"
-        tools:visibility="visible">
+        <TextView
+            android:id="@+id/hw_info_frame_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#74CACACA"
+            android:text="Hardware Information "
+            android:textAlignment="viewEnd"
+            android:textAllCaps="true"
+            android:textColor="#FF3D00"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/sc_hw_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#C6FF00">
+
+            <TextView
+                android:id="@+id/x_hw_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66FFFFFF"
+                android:clickable="false"
+                android:editable="false"
+                android:ellipsize="end"
+                android:enabled="true"
+                android:fadeScrollbars="true"
+                android:fontFamily="sans-serif"
+                android:isScrollContainer="true"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="14sp"
+                android:verticalScrollbarPosition="defaultPosition"
+                android:visibility="visible"
+                tools:visibility="visible">
 
 
-    </TextView>
+            </TextView>
+        </ScrollView>
 
-    <TextView
-        android:id="@+id/textView3"
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CPU Information"
-        android:textColor="#F44336"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="284dp">
 
-    <ScrollView
-        android:layout_width="400dp"
-        android:layout_height="314dp">
+        <TextView
+            android:id="@+id/Cpu_info_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#74CACACA"
+            android:text="Cpu Information (Sroll for more info)"
+            android:textAlignment="viewEnd"
+            android:textAllCaps="true"
+            android:textColor="#D500F9"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="268dp">
 
             <TextView
                 android:id="@+id/cpu"
-                android:layout_width="391dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentTop="false"
                 android:layout_centerHorizontal="false"
                 android:gravity="left"
@@ -69,9 +84,7 @@
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
                 android:textSize="14sp" />
-
-        </LinearLayout>
-    </ScrollView>
-
+        </ScrollView>
+    </FrameLayout>
 
 </LinearLayout>
