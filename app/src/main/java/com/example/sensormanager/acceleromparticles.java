@@ -122,12 +122,12 @@ public class acceleromparticles extends Activity {
 
 
 
-            class Particle extends View {
-                private float mPosX = (float) Math.random();
-                private float mPosY = (float) Math.random();
-                private float mVelX;
-                private float mVelY;
-                public int ui = 1;
+        class Particle extends View {
+            private float mPosX = (float) Math.random();
+            private float mPosY = (float) Math.random();
+            private float mVelX;
+            private float mVelY;
+            public int ui = 1;
 
 
              /*   Layout lay = parentLayo.findViewById(R.id.);
@@ -135,61 +135,61 @@ public class acceleromparticles extends Activity {
                 tv.setText("New textview");
                 lay.addView(view); */
 
-                public Particle(Context context) {
-                    super(context);
+            public Particle(Context context) {
+                super(context);
 
                 //    if (ui ==1)
                 //    Toast.makeText( acceleromparticles.this, "Please move your mobile phone", Toast.LENGTH_LONG ).show();
                 //    ui=0;
+            }
+
+            public Particle(Context context, AttributeSet attrs) {
+                super(context, attrs);
+            }
+
+            public Particle(Context context, AttributeSet attrs, int defStyleAttr) {
+                super(context, attrs, defStyleAttr);
+            }
+
+            public Particle(Context context, AttributeSet attrs, int defStyleAttr,
+                            int defStyleRes) {
+                super(context, attrs, defStyleAttr, defStyleRes);
+            }
+
+            public void computePhysics(float sx, float sy, float dT) {
+
+                final float ax = -sx/35;  //viscosity changes
+                final float ay = -sy/35;
+
+                mPosX += mVelX * dT + ax * dT * dT ; //original /2
+                mPosY += mVelY * dT + ay * dT * dT ;
+
+                mVelX += ax * dT;
+                mVelY += ay * dT;
+            }
+
+
+            public void resolveCollisionWithBounds() {
+                final float xmax = mHorizontalBound;
+                final float ymax = mVerticalBound;
+                final float x = mPosX;
+                final float y = mPosY;
+                if (x > xmax) {
+                    mPosX = xmax;
+                    mVelX = 0;
+                } else if (x < -xmax) {
+                    mPosX = -xmax;
+                    mVelX = 0;
                 }
-
-                public Particle(Context context, AttributeSet attrs) {
-                    super(context, attrs);
-                }
-
-                public Particle(Context context, AttributeSet attrs, int defStyleAttr) {
-                    super(context, attrs, defStyleAttr);
-                }
-
-                public Particle(Context context, AttributeSet attrs, int defStyleAttr,
-                                int defStyleRes) {
-                    super(context, attrs, defStyleAttr, defStyleRes);
-                }
-
-                public void computePhysics(float sx, float sy, float dT) {
-
-                    final float ax = -sx/35;  //viscosity changes
-                    final float ay = -sy/35;
-
-                    mPosX += mVelX * dT + ax * dT * dT ; //original /2
-                    mPosY += mVelY * dT + ay * dT * dT ;
-
-                    mVelX += ax * dT;
-                    mVelY += ay * dT;
-                }
-
-
-                public void resolveCollisionWithBounds() {
-                    final float xmax = mHorizontalBound;
-                    final float ymax = mVerticalBound;
-                    final float x = mPosX;
-                    final float y = mPosY;
-                    if (x > xmax) {
-                        mPosX = xmax;
-                        mVelX = 0;
-                    } else if (x < -xmax) {
-                        mPosX = -xmax;
-                        mVelX = 0;
-                    }
-                    if (y > ymax) {
-                        mPosY = ymax;
-                        mVelY = 0;
-                    } else if (y < -ymax) {
-                        mPosY = -ymax;
-                        mVelY = 0;
-                    }
+                if (y > ymax) {
+                    mPosY = ymax;
+                    mVelY = 0;
+                } else if (y < -ymax) {
+                    mPosY = -ymax;
+                    mVelY = 0;
                 }
             }
+        }
 
         /*
          * A particle system is just a collection of particles
