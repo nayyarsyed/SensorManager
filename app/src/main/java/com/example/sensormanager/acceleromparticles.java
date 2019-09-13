@@ -2,6 +2,7 @@ package com.example.sensormanager;
 
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -22,20 +23,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+
+import java.util.zip.Inflater;
 
 
 public class acceleromparticles extends Activity {
 
-    private SimulationView mSimulationView;
+    public SimulationView mSimulationView;
     private SensorManager mSensorManager;
     private PowerManager mPowerManager;
     private WindowManager mWindowManager;
     private Display mDisplay;
     private WakeLock mWakeLock;
     public int  ui = 1 ;
+    public FrameLayout fl;
 
     /** Called when the activity is first created. */
+    @SuppressLint("ResourceType")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +57,14 @@ public class acceleromparticles extends Activity {
         // Get an instance of the WindowManager
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
+        mSimulationView = new SimulationView(getApplicationContext());
 
-        // Create a bright wake lock
-        //  mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, getClass()
-
-        // instantiate our simulation view and set it as the activity's content
-        mSimulationView = new SimulationView(this);
-        mSimulationView.setBackgroundResource(R.drawable.wood);
-        setContentView(mSimulationView);
+        //    fl.addView( mSimulationView );
+        setContentView( R.layout.dyn);
+        FrameLayout jfl = findViewById( R.id.fl );
+        jfl.addView( mSimulationView );
+       mSimulationView.setBackgroundResource(R.drawable.wood);
+       // setContentView(mSimulationView);
 
     }
 
@@ -71,8 +80,7 @@ public class acceleromparticles extends Activity {
 
         // Start the simulation
         mSimulationView.startSimulation();
-
-        //  mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
+        // mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
 
     }
 
@@ -96,13 +104,10 @@ public class acceleromparticles extends Activity {
         // diameter of the balls in meters
         private static final float sBallDiameter = 0.0005f;
         private static final float sBallDiameter2 = sBallDiameter * sBallDiameter;
-
         private final int mDstWidth;
         private final int mDstHeight;
-
         private Sensor mAccelerometer;
         private long mLastT;
-
         private float mXDpi;
         private float mYDpi;
         private float mMetersToPixelsX;
@@ -113,7 +118,7 @@ public class acceleromparticles extends Activity {
         private float mSensorY;
         private float mHorizontalBound;
         private float mVerticalBound;
-        private final ParticleSystem mParticleSystem;
+        public final ParticleSystem mParticleSystem;
         /*
          * Each of our particle holds its previous and current position, its
          * acceleration. for added realism each particle has its own friction
@@ -127,21 +132,11 @@ public class acceleromparticles extends Activity {
             private float mPosY = (float) Math.random();
             private float mVelX;
             private float mVelY;
-            public int ui = 1;
-
-
-             /*   Layout lay = parentLayo.findViewById(R.id.);
-                TextView tv = new TextView(this);
-                tv.setText("New textview");
-                lay.addView(view); */
 
             public Particle(Context context) {
-                super(context);
-
-                //    if (ui ==1)
-                //    Toast.makeText( acceleromparticles.this, "Please move your mobile phone", Toast.LENGTH_LONG ).show();
-                //    ui=0;
+                super( context );
             }
+
 
             public Particle(Context context, AttributeSet attrs) {
                 super(context, attrs);
@@ -161,8 +156,8 @@ public class acceleromparticles extends Activity {
                 final float ax = -sx/35;  //viscosity changes
                 final float ay = -sy/35;
 
-                mPosX += mVelX * dT + ax * dT * dT ; //original /2
-                mPosY += mVelY * dT + ay * dT * dT ;
+                mPosX += mVelX * dT + ax * dT * dT/2 ; //original /2
+                mPosY += mVelY * dT + ay * dT * dT /2;
 
                 mVelX += ax * dT;
                 mVelY += ay * dT;
@@ -195,7 +190,7 @@ public class acceleromparticles extends Activity {
          * A particle system is just a collection of particles
          */
         class ParticleSystem {
-            static final int NUM_PARTICLES = 1;
+            static final int NUM_PARTICLES = 100;
             private Particle mBalls[] = new Particle[NUM_PARTICLES];
 
             ParticleSystem() {
@@ -205,18 +200,11 @@ public class acceleromparticles extends Activity {
                 for (int i = 0; i < mBalls.length; i++) {
                     mBalls[i] = new Particle(getContext());
                     mBalls[i].setBackgroundResource(R.drawable.ball);
-
-
                     mBalls[i].setLayerType(LAYER_TYPE_HARDWARE, null);
-
                     addView(mBalls[i], new ViewGroup.LayoutParams(mDstWidth, mDstHeight));
                 }
 
-
             }
-
-
-
 
             /*
              * Update the position of each particle in the system using the
@@ -245,7 +233,7 @@ public class acceleromparticles extends Activity {
                 updatePositions(sx, sy, now);
 
                 // We do no more than a limited number of iterations
-                final int NUM_MAX_ITERATIONS = 2;  //nyy changed from 10 to 1
+                final int NUM_MAX_ITERATIONS = 1;  //nyy changed from 10 to 1
 
                 /*
                  * Resolve collisions, each particle is tested against every
@@ -330,7 +318,7 @@ public class acceleromparticles extends Activity {
 
             DisplayMetrics metrics = new DisplayMetrics();
             getWindow().setFlags(
-                    WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                    WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -338,8 +326,8 @@ public class acceleromparticles extends Activity {
             mYDpi = metrics.ydpi;
 
             //this will reduce the size of the ball oroginal was 0.0254 changed t 0.0854
-            mMetersToPixelsX = mXDpi / 0.00154f;
-            mMetersToPixelsY = mYDpi / 0.00154f;
+            mMetersToPixelsX = mXDpi / 0.01154f;
+            mMetersToPixelsY = mYDpi / 0.01154f;
 
             // rescale the ball so it's about 0.5 cm on screen
             mDstWidth = (int) (sBallDiameter * mMetersToPixelsX * 0.5f);

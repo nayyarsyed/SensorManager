@@ -59,9 +59,10 @@
 
         <fragment
             android:id="@+id/fragment"
-            android:name="com.example.sensormanager.memory_info"
+            android:name="com.example.sensormanager.memory_info_frag"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            parent:layout="@layout/fragment_memory_info" />
 
     </LinearLayout>
 

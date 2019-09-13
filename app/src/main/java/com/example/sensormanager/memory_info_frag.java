@@ -1,7 +1,6 @@
 package com.example.sensormanager;
 
 import android.app.ActivityManager;
-import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.RequiresApi;
@@ -14,7 +13,7 @@ import android.widget.TextView;
 
 
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class memory_info extends Fragment {
+public class memory_info_frag extends Fragment {
 
 
     @Override
@@ -28,13 +27,11 @@ public class memory_info extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
-
-
         super.onActivityCreated( savedInstanceState );
+
+
         ProgressBar pb = getActivity().findViewById( R.id.progressBar );
-
-
-        ActivityManager actManager;
+         ActivityManager actManager;
         actManager = (ActivityManager) getActivity().getSystemService( getActivity().ACTIVITY_SERVICE );
         ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
         actManager.getMemoryInfo( memInfo );
@@ -46,15 +43,14 @@ public class memory_info extends Fragment {
         double availableMemory_in_gb = ((double) availableMemory / convertbytes_to_gb);
         String formated_avl_mem = String.format( "%.2f", availableMemory_in_gb );
 
-        String details = "Total Memory : " + formated_total_memory + " Gb"
-                + "\nAvailable Memory : " + formated_avl_mem + " Gb";
+//        String details = "Total Memory : " + formated_total_memory + " Gb"
+//                + "\nAvailable Memory : " + formated_avl_mem + " Gb";
         TextView jtm = getActivity().findViewById( R.id.tm );
         jtm.setText( formated_total_memory );
-        pb.setMax( (int) totalMemory_in_gb);
         TextView jam = getActivity().findViewById( R.id.am );
         jam.setText( formated_avl_mem );
-        pb.setProgress((int)availableMemory_in_gb) ;
-
+        pb.setMax((int)totalMemory_in_gb);
+        pb.setProgress( (int)availableMemory_in_gb );
 
     }
 }

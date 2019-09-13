@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".memory_info">
+    >
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -26,12 +26,14 @@
 
         <ProgressBar
             android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
+            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
             android:layout_width="357dp"
             android:layout_height="65dp"
             android:layout_weight="1"
+            android:background="@drawable/redborders"
             android:max="10"
-            android:progress="3" />
+            android:progress="0"
+            android:progressTint="#651FFF" />
     </LinearLayout>
 
 </LinearLayout>
