@@ -24,7 +24,7 @@
             android:id="@+id/sc_hw_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#C6FF00">
+            android:backgroundTint="#97C40D">
 
             <TextView
                 android:id="@+id/x_hw_tv"
@@ -66,7 +66,7 @@
             android:text="Cpu Information (Sroll for more info)"
             android:textAlignment="viewEnd"
             android:textAllCaps="true"
-            android:textColor="#D500F9"
+            android:textColor="#9518AA"
             android:textStyle="bold" />
 
         <ScrollView
@@ -76,13 +76,12 @@
             <TextView
                 android:id="@+id/cpu"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="false"
-                android:layout_centerHorizontal="false"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:gravity="left"
                 android:text="CPU Information Display Here"
-                android:textAlignment="viewStart"
-                android:textColor="#000000"
+                android:textColor="#9518AA"
                 android:textSize="14sp" />
         </ScrollView>
     </FrameLayout>

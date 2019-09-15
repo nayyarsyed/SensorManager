@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import static android.content.Context.ACTIVITY_SERVICE;
+
 
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class memory_info_frag extends Fragment {
@@ -29,12 +31,27 @@ public class memory_info_frag extends Fragment {
         // TODO Auto-generated method stub
         super.onActivityCreated( savedInstanceState );
 
+        //another way to check ram shorten the code further
 
+//        ActivityManager.MemoryInfo mi = new ActivityManager.MemoryInfo();
+//        ActivityManager activityManager = (ActivityManager) getActivity().getSystemService(ACTIVITY_SERVICE);
+//        activityManager.getMemoryInfo(mi);
+//        double availableMegs = mi.availMem / 0x100000L;
+//        //Percentage can be calculated for API 16+
+//        double percentAvail = mi.availMem / (double)mi.totalMem * 100.0;
+//        Log.d("mem", "memory" + String.valueOf( availableMegs ) + "precent % " +percentAvail );
+
+
+        //Actually implemented in this app
+        ActivityManager actManager;
+        TextView jtm = getActivity().findViewById( R.id.tm );
+        TextView jam = getActivity().findViewById( R.id.am );
         ProgressBar pb = getActivity().findViewById( R.id.progressBar );
-         ActivityManager actManager;
-        actManager = (ActivityManager) getActivity().getSystemService( getActivity().ACTIVITY_SERVICE );
         ActivityManager.MemoryInfo memInfo = new ActivityManager.MemoryInfo();
+        actManager = (ActivityManager) getActivity().getSystemService( getActivity().ACTIVITY_SERVICE );
         actManager.getMemoryInfo( memInfo );
+
+
         long totalMemory = memInfo.totalMem;
         long availableMemory = memInfo.availMem;
         long convertbytes_to_gb = 1073741824;
@@ -45,12 +62,15 @@ public class memory_info_frag extends Fragment {
 
 //        String details = "Total Memory : " + formated_total_memory + " Gb"
 //                + "\nAvailable Memory : " + formated_avl_mem + " Gb";
-        TextView jtm = getActivity().findViewById( R.id.tm );
-        jtm.setText( formated_total_memory );
-        TextView jam = getActivity().findViewById( R.id.am );
-        jam.setText( formated_avl_mem );
+        jtm.setText( "Total Memory as of now  : " + formated_total_memory );
+        jam.setText( "Available Memory as of now  : " +formated_avl_mem );
         pb.setMax((int)totalMemory_in_gb);
         pb.setProgress( (int)availableMemory_in_gb );
 
+
+
+
     }
+
+
 }

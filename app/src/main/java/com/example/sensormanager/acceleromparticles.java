@@ -1,7 +1,6 @@
 package com.example.sensormanager;
 
 
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -28,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 
 import java.util.zip.Inflater;
 
@@ -41,7 +41,6 @@ public class acceleromparticles extends Activity {
     private Display mDisplay;
     private WakeLock mWakeLock;
     public int  ui = 1 ;
-    public FrameLayout fl;
 
     /** Called when the activity is first created. */
     @SuppressLint("ResourceType")
@@ -58,12 +57,11 @@ public class acceleromparticles extends Activity {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
         mSimulationView = new SimulationView(getApplicationContext());
-
         //    fl.addView( mSimulationView );
         setContentView( R.layout.dyn);
         FrameLayout jfl = findViewById( R.id.fl );
         jfl.addView( mSimulationView );
-       mSimulationView.setBackgroundResource(R.drawable.wood);
+        mSimulationView.setBackgroundResource(R.drawable.wood);
        // setContentView(mSimulationView);
 
     }
@@ -102,7 +100,7 @@ public class acceleromparticles extends Activity {
 
     class SimulationView extends FrameLayout implements SensorEventListener {
         // diameter of the balls in meters
-        private static final float sBallDiameter = 0.0005f;
+        private static final float sBallDiameter = 0.000395f;
         private static final float sBallDiameter2 = sBallDiameter * sBallDiameter;
         private final int mDstWidth;
         private final int mDstHeight;
@@ -137,7 +135,6 @@ public class acceleromparticles extends Activity {
                 super( context );
             }
 
-
             public Particle(Context context, AttributeSet attrs) {
                 super(context, attrs);
             }
@@ -153,20 +150,17 @@ public class acceleromparticles extends Activity {
 
             public void computePhysics(float sx, float sy, float dT) {
 
-                final float ax = -sx/35;  //viscosity changes
-                final float ay = -sy/35;
-
+                final float ax = -sx/10;  //viscosity changes
+                final float ay = -sy/10;
                 mPosX += mVelX * dT + ax * dT * dT/2 ; //original /2
                 mPosY += mVelY * dT + ay * dT * dT /2;
-
                 mVelX += ax * dT;
                 mVelY += ay * dT;
             }
 
-
             public void resolveCollisionWithBounds() {
-                final float xmax = mHorizontalBound;
-                final float ymax = mVerticalBound;
+                final float xmax =  mHorizontalBound; // nyy (float) Math.random();
+                final float ymax =  mVerticalBound;    //nyy (float) Math.random();
                 final float x = mPosX;
                 final float y = mPosY;
                 if (x > xmax) {
@@ -199,11 +193,11 @@ public class acceleromparticles extends Activity {
                  */
                 for (int i = 0; i < mBalls.length; i++) {
                     mBalls[i] = new Particle(getContext());
-                    mBalls[i].setBackgroundResource(R.drawable.ball);
+                    mBalls[i].setBackgroundResource(R.drawable.b);
+
                     mBalls[i].setLayerType(LAYER_TYPE_HARDWARE, null);
                     addView(mBalls[i], new ViewGroup.LayoutParams(mDstWidth, mDstHeight));
                 }
-
             }
 
             /*
@@ -233,7 +227,7 @@ public class acceleromparticles extends Activity {
                 updatePositions(sx, sy, now);
 
                 // We do no more than a limited number of iterations
-                final int NUM_MAX_ITERATIONS = 1;  //nyy changed from 10 to 1
+                final int NUM_MAX_ITERATIONS = 10;  //nyy changed from 10 to 1
 
                 /*
                  * Resolve collisions, each particle is tested against every
@@ -258,7 +252,7 @@ public class acceleromparticles extends Activity {
                                  * add a little bit of entropy, after nothing is
                                  * perfect in the universe.
                                  */
-                                dx += ((float) Math.random() - 0.01f) * 0.0001f; // 0.05 changed to 0.01 will change the animation pattern and will
+                                dx += ((float) Math.random() - 0.01f) * 0.0001f; // nyy 0.05 changed to 0.01 will change the animation pattern and will
                                 dy += ((float) Math.random() - 0.01f) * 0.0001f; // 0.0001 chnaged to .001
                                 dd = dx * dx + dy * dy;
                                 // simulate the spring
@@ -266,10 +260,10 @@ public class acceleromparticles extends Activity {
                                 final float c = (0.5f * (sBallDiameter - d)) / d;
                                 final float effectX = dx * c;
                                 final float effectY = dy * c;
-                                curr.mPosX -= effectX;
-                                curr.mPosY -= effectY;
-                                ball.mPosX += effectX;
-                                ball.mPosY += effectY;
+                                curr.mPosX -= effectX/2;
+                                curr.mPosY -= effectY/2;
+                                ball.mPosX += effectX/2;
+                                ball.mPosY += effectY/2;
                                 more = true;
                             }
                         }
@@ -299,7 +293,7 @@ public class acceleromparticles extends Activity {
              * of the acceleration. As an added benefit, we use less power and
              * CPU resources.
              */
-            mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
+            mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_STATUS_ACCURACY_HIGH);
 
 
         }
@@ -325,18 +319,18 @@ public class acceleromparticles extends Activity {
             mXDpi = metrics.xdpi;
             mYDpi = metrics.ydpi;
 
-            //this will reduce the size of the ball oroginal was 0.0254 changed t 0.0854
-            mMetersToPixelsX = mXDpi / 0.01154f;
-            mMetersToPixelsY = mYDpi / 0.01154f;
+            // nyy this will reduce the size of the ball oroginal was 0.0254 changed t 0.0854
+            mMetersToPixelsX = mXDpi / 0.0354f;
+            mMetersToPixelsY = mYDpi / 0.03854f;
 
             // rescale the ball so it's about 0.5 cm on screen
             mDstWidth = (int) (sBallDiameter * mMetersToPixelsX * 0.5f);
             mDstHeight = (int) (sBallDiameter * mMetersToPixelsY * 0.5f);
             mParticleSystem = new ParticleSystem();
 
-            Options opts = new Options();
-            opts.inDither = true;
-            opts.inPreferredConfig = Bitmap.Config.RGB_565;
+//            Options opts = new Options();
+//            opts.inDither = true;
+//            opts.inPreferredConfig = Bitmap.Config.RGB_565;
         }
 
         @Override
@@ -345,8 +339,8 @@ public class acceleromparticles extends Activity {
             // the bitmap
             mXOrigin = (w - mDstWidth) * 0.5f;
             mYOrigin = (h - mDstHeight) * 0.5f;
-            mHorizontalBound = ((w / mMetersToPixelsX - sBallDiameter) * 0.5f);
-            mVerticalBound = ((h / mMetersToPixelsY - sBallDiameter) * 0.5f);
+            mHorizontalBound = ((w / mMetersToPixelsX - sBallDiameter) * 0.3f);
+            mVerticalBound = ((h / mMetersToPixelsY - sBallDiameter) * 0.3f);
         }
 
         @Override

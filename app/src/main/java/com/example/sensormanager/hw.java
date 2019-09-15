@@ -36,14 +36,14 @@ public class hw extends AppCompatActivity {
         Process process ;
         byte[] byteArry ;
         cpu = findViewById(R.id.cpu);
-        byteArry = new byte[9024];
+        byteArry = new byte[5000];
 
         try{
             processBuilder = new ProcessBuilder(DATA);
             process = processBuilder.start();
             inputStream = process.getInputStream();
             while(inputStream.read(byteArry) != -1){
-                Holder = Holder + new String(byteArry);
+                Holder = Holder + "," + new String(byteArry);
             }
 
             inputStream.close();
@@ -53,6 +53,7 @@ public class hw extends AppCompatActivity {
             ex.printStackTrace();
         }
 
+        Log.d("pappu",Holder);
         cpu.setText(Holder);
         // hardware build information string building
         String details = "VERSION.RELEASE : " + Build.VERSION.RELEASE
