@@ -9,16 +9,18 @@
 
     <FrameLayout
         android:id="@+id/fl"
-        android:layout_width="109dp"
-        android:layout_height="46dp"
-        android:background="#00B0FF">
+        android:layout_width="135dp"
+        android:layout_height="81dp"
+
+        android:theme="@style/AlertDialog.AppCompat.Light">
+
 
     </FrameLayout>
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="247dp"
-        android:layout_height="99dp"
+        android:layout_width="match_parent"
+        android:layout_height="295dp"
         android:text="50 % for showing rest of the items." />
 
 </LinearLayout>

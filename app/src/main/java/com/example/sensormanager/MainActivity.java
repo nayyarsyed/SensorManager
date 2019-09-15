@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     List<Sensor> jlsr;
     ArrayList<String> liststring;
     ArrayAdapter<String> adapter;
-    Button jbt;
+    ImageView jbt;
     Button jbt_hw;
 
 
@@ -33,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView( R.layout.starthere );
         sm = (SensorManager) getSystemService( SENSOR_SERVICE );
-        jbt = findViewById( R.id.xbt );
+     //   jbt = findViewById( R.id.xbt );
+        jbt = findViewById( R.id.hw_img_btn );
         jbt_hw = findViewById( R.id.x_hw_btn );
         sensorcount = findViewById( R.id.x_tv_sensorcount );
         jlv = findViewById( R.id.xlv );
