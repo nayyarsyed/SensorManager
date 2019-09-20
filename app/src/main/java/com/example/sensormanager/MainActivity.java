@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
         setContentView( R.layout.starthere );
         sm = (SensorManager) getSystemService( SENSOR_SERVICE );
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent( MainActivity.this, acceleromparticles.class );
                 startActivity( intent );
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         } );
 
@@ -90,6 +93,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view2) {
                 Intent intent_hw = new Intent( MainActivity.this, hw.class );
                 startActivity( intent_hw );
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+
             }
         } );
 
