@@ -11,12 +11,25 @@
     <ListView
         android:id="@+id/xlv"
         android:layout_width="match_parent"
-        android:layout_height="240dp" />
+        android:layout_height="240dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp" />
 
     <TextView
         android:id="@+id/x_tv_sensorcount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -28,16 +41,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:stateListAnimator="@android:anim/slide_in_left"
         android:text="Accelerometer Demo"
         android:textAlignment="center"
         android:textColor="#01579B" />
-
-    <ImageView
-        android:id="@+id/hw_img_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/spinner_background" />
 
     <Button
         android:id="@+id/x_hw_btn"
@@ -46,6 +60,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
         android:text="Hardware Information"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:textColor="#0D47A1" />
 
     <TextView
@@ -56,7 +77,14 @@
         android:text="Quick info about the sensors :"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"/>
 
     <FrameLayout
         android:layout_width="match_parent"

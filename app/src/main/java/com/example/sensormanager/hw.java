@@ -20,6 +20,7 @@ public class hw extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in_right,  R.anim.slide_out_right);
 
         setContentView(R.layout.x_hw_view);
         TextView j_hw_tv = findViewById(R.id.x_hw_tv);
