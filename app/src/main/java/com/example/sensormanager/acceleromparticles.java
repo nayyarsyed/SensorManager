@@ -74,15 +74,26 @@ public class acceleromparticles extends Activity {
         //    fl.addView( mSimulationView );
         setContentView( R.layout.dyn);
         FrameLayout jfl = findViewById( R.id.fl );
+
+        // added teh simulation view
         jfl.addView( mSimulationView,0 );
 
+
+        //Creating Dynamic button and setting the
         Button b1 = new Button(this);
-        b1.setLayoutParams( new LinearLayout.LayoutParams( 300,100 ) );
+        b1.setLayoutParams( new LinearLayout.LayoutParams( 600,200 ) );
         b1.setHeight( 100 );
         b1.setWidth( 50 );
-
         jfl.addView( b1 ,1);
-        b1.setText( "Dynamicbutton" );
+        b1.setText( "Dynamic button 2 Recreate activity " );
+        //Re creating teh Activity
+        b1.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View b1_listner) {
+                recreate();
+            }
+        } );
+
 
         mSimulationView.setBackgroundResource(R.drawable.wood);
        // setContentView(mSimulationView);
@@ -149,8 +160,8 @@ public class acceleromparticles extends Activity {
 
 
         class Particle extends View {
-            private float mPosX = (float) Math.random();
-            private float mPosY = (float) Math.random();
+            private float mPosX = 0 ;//  nyy (float) Math.random();		private float mPosX = (float) Math.random();
+            private float mPosY = 0 ;// nyy (float) Math.random();
             private float mVelX;
             private float mVelY;
 
