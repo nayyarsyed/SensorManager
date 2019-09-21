@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
     List<Sensor> jlsr;
     ArrayList<String> liststring;
     ArrayAdapter<String> adapter;
-    Button jbt;
-    Button jbt_hw;
+    Button jbt,jbt_hw,j_simple_acc_demo;
+
 
 
     @Override
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
      //   jbt = findViewById( R.id.xbt );
         jbt = findViewById( R.id.xbt );
         jbt_hw = findViewById( R.id.x_hw_btn );
+        j_simple_acc_demo = findViewById( R.id.simple_acc_move_btn );
         sensorcount = findViewById( R.id.x_tv_sensorcount );
         jlv = findViewById( R.id.xlv );
         liststring = new ArrayList<String>();
@@ -98,6 +98,14 @@ public class MainActivity extends AppCompatActivity {
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
 
             }
+        } );
+
+        j_simple_acc_demo.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View j_simple_acc_demo_view) {
+                Intent intent_hw = new Intent( MainActivity.this, Accelerometer_nyy_demo.class );
+                startActivity( intent_hw );
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);            }
         } );
 
     }

@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="64dp"
         android:text="50 % for showing rest of the items." />
 
 </LinearLayout>
