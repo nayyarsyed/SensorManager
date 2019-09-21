@@ -54,6 +54,24 @@
         android:textColor="#01579B" />
 
     <Button
+        android:id="@+id/simple_acc_move_btn"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:stateListAnimator="@android:anim/slide_in_left"
+        android:text="Simple Accelerometer Movements"
+        android:textAlignment="center"
+        android:textColor="#01579B" />
+
+    <Button
         android:id="@+id/x_hw_btn"
         style="@android:style/Widget.DeviceDefault.Light.Button.Borderless.Small"
         android:layout_width="match_parent"

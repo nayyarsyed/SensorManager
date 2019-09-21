@@ -159,6 +159,7 @@ public class acceleromparticles extends Activity {
 
 
 
+
         class Particle extends View {
             private float mPosX = 0 ;//  nyy (float) Math.random();		private float mPosX = (float) Math.random();
             private float mPosY = 0 ;// nyy (float) Math.random();
@@ -218,7 +219,7 @@ public class acceleromparticles extends Activity {
          * A particle system is just a collection of particles
          */
         class ParticleSystem {
-            static final int NUM_PARTICLES = 100;
+            static final int NUM_PARTICLES = 200;
             private Particle mBalls[] = new Particle[NUM_PARTICLES];
 
             ParticleSystem() {
@@ -227,11 +228,14 @@ public class acceleromparticles extends Activity {
                  */
                 for (int i = 0; i < mBalls.length; i++) {
                     mBalls[i] = new Particle(getContext());
-                    mBalls[i].setBackgroundResource(R.drawable.b);
+                    mBalls[i].setBackgroundResource(R.drawable.ball2);
 
                     mBalls[i].setLayerType(LAYER_TYPE_HARDWARE, null);
-                    addView(mBalls[i], new ViewGroup.LayoutParams(mDstWidth, mDstHeight));
+                    addView(mBalls[i], new LayoutParams(mDstWidth, mDstHeight));
+
                 }
+
+
             }
 
             /*
@@ -261,7 +265,7 @@ public class acceleromparticles extends Activity {
                 updatePositions(sx, sy, now);
 
                 // We do no more than a limited number of iterations
-                final int NUM_MAX_ITERATIONS = 2;  //nyy changed from 10 to 1
+                final int NUM_MAX_ITERATIONS = 10;  //nyy changed from 10 to 1
 
                 /*
                  * Resolve collisions, each particle is tested against every
