@@ -24,19 +24,19 @@ public class MainActivity extends AppCompatActivity {
     List<Sensor> jlsr;
     ArrayList<String> liststring;
     ArrayAdapter<String> adapter;
-    ImageView jbt;
+    Button jbt;
     Button jbt_hw;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_right,  R.anim.slide_out_right);
 
         setContentView( R.layout.starthere );
         sm = (SensorManager) getSystemService( SENSOR_SERVICE );
      //   jbt = findViewById( R.id.xbt );
-        jbt = findViewById( R.id.hw_img_btn );
+        jbt = findViewById( R.id.xbt );
         jbt_hw = findViewById( R.id.x_hw_btn );
         sensorcount = findViewById( R.id.x_tv_sensorcount );
         jlv = findViewById( R.id.xlv );
@@ -54,14 +54,16 @@ public class MainActivity extends AppCompatActivity {
             sensorText.append( currentSensor.getName() ).append(
                     System.getProperty( "line.separator" ) );
         }
+
+
         if ((jlsr.size() != 0)) {
             // block of code to be executed if the condition is true
             for (int i = 0; i < jlsr.size(); i++) {
-                liststring.add( "Sensor " + (i + 1) + " -> " + jlsr.get( i ).getName() +
-                        "\n" + " Max Range : " + jlsr.get( i ).getMaximumRange()+
-                        "\n" + " Max Delay : " + jlsr.get( i ).getMaxDelay()+
-                        "\n" + " Min Delay : " + jlsr.get( i ).getMinDelay()+
-                        "\n" + " Power usage (mA) : " + jlsr.get( i ).getPower()
+                liststring.add( "Sensor"   + (i + 1) + " -> " + jlsr.get( i ).getName() +
+                        "\n" + "Max Range" + "\f" +  jlsr.get( i ).getMaximumRange()+
+                        "\n" + "Max Delay" + "\f"+ jlsr.get( i ).getMaxDelay()+
+                        "\n" + "Min Delay" + "\f"+ jlsr.get( i ).getMinDelay()+
+                        "\n" + "Power usage (mA)"+ "\f"+  jlsr.get( i ).getPower()
                 );
                 //   Log.d("liststrnig",jlsr.get(i).getName());
             }

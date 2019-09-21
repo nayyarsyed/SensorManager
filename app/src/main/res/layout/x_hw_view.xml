@@ -13,11 +13,13 @@
             android:id="@+id/hw_info_frame_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#74CACACA"
+            android:background="#6200EA"
+            android:fontFamily="sans-serif-light"
             android:text="Hardware Information "
             android:textAlignment="viewEnd"
             android:textAllCaps="true"
-            android:textColor="#FF3D00"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <ScrollView
@@ -39,6 +41,11 @@
                 android:fontFamily="sans-serif"
                 android:isScrollContainer="true"
                 android:overScrollMode="always"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
                 android:scrollbarStyle="insideInset"
                 android:scrollbars="vertical"
                 android:textAlignment="viewStart"
@@ -62,11 +69,11 @@
             android:id="@+id/Cpu_info_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#74CACACA"
+            android:background="#C51162"
             android:text="Cpu Information (Sroll for more info)"
             android:textAlignment="viewEnd"
             android:textAllCaps="true"
-            android:textColor="#9518AA"
+            android:textColor="#FFFFFF"
             android:textStyle="bold" />
 
         <ScrollView
@@ -80,8 +87,14 @@
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
                 android:gravity="left"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="17dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
                 android:text="CPU Information Display Here"
-                android:textColor="#9518AA"
+                android:textColor="@android:color/background_dark"
                 android:textSize="14sp" />
         </ScrollView>
     </FrameLayout>

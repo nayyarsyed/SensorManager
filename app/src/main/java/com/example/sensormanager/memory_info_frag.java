@@ -62,15 +62,11 @@ public class memory_info_frag extends Fragment {
 
 //        String details = "Total Memory : " + formated_total_memory + " Gb"
 //                + "\nAvailable Memory : " + formated_avl_mem + " Gb";
-        jtm.setText( "Total Memory as of now  : " + formated_total_memory );
-        jam.setText( "Available Memory as of now  : " +formated_avl_mem );
+        jtm.setText( "Total Memory as of now        : " + formated_total_memory +"Giga-bytes");
+        jam.setText( "Available Memory as of now    : " +formated_avl_mem +"Giga-bytes");
         pb.setMax((int)totalMemory_in_gb);
         pb.setProgress( (int)availableMemory_in_gb );
 
-
-
-
     }
-
 
 }

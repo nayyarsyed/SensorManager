@@ -11,6 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".Accelerometer_nyy_demo"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".accelerom"
             android:screenOrientation="portrait" />
