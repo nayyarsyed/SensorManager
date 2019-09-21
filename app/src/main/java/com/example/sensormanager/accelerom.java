@@ -1,6 +1,7 @@
 package com.example.sensormanager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -17,35 +18,35 @@ public class accelerom extends AppCompatActivity implements SensorEventListener 
     Sensor sensor;
     SensorManager sensormanager;
     Switch simpleSwitch1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accelerom);
-        sensormanager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sensor = sensormanager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_accelerom );
+        sensormanager = (SensorManager) getSystemService( SENSOR_SERVICE );
+        sensor = sensormanager.getDefaultSensor( Sensor.TYPE_ACCELEROMETER );
 
-        x = (TextView) findViewById(R.id.x_x);
-        y = (TextView) findViewById(R.id.x_y);
-        z = (TextView) findViewById(R.id.x_z);
-        simpleSwitch1 = (Switch) findViewById(R.id.simpleSwitch1);
+        x = (TextView) findViewById( R.id.x_x );
+        y = (TextView) findViewById( R.id.x_y );
+        z = (TextView) findViewById( R.id.x_z );
+        simpleSwitch1 = (Switch) findViewById( R.id.simpleSwitch1 );
 
 
-        simpleSwitch1.setOnClickListener(new View.OnClickListener() {
+        simpleSwitch1.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String statusSwitch1;
                 if (simpleSwitch1.isChecked()) {
 
-                    sensormanager.registerListener(accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-                    Toast.makeText(accelerom.this, "Accelerometer Started", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(accelerom.this, "Accelerometer stopped", Toast.LENGTH_SHORT).show();
-                    sensormanager.unregisterListener(accelerom.this,sensor);
+                    sensormanager.registerListener( accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL );
+                    Toast.makeText( accelerom.this, "Accelerometer Started", Toast.LENGTH_SHORT ).show();
+                } else {
+                    Toast.makeText( accelerom.this, "Accelerometer stopped", Toast.LENGTH_SHORT ).show();
+                    sensormanager.unregisterListener( accelerom.this, sensor );
                 }
             }
-        });
+        } );
     }
 
     @Override
@@ -55,28 +56,28 @@ public class accelerom extends AppCompatActivity implements SensorEventListener 
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
-        x.setText("X Value :" + sensorEvent.values[0]);
-        y.setText("Y Value :" + sensorEvent.values[1]);
-        z.setText("Z Value :" + sensorEvent.values[2]);
+        x.setText( "X Value :" + sensorEvent.values[0] );
+        y.setText( "Y Value :" + sensorEvent.values[1] );
+        z.setText( "Z Value :" + sensorEvent.values[2] );
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        sensormanager.unregisterListener(accelerom.this,sensor);
+        sensormanager.unregisterListener( accelerom.this, sensor );
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        sensormanager.registerListener(accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sensormanager.registerListener( accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL );
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        sensormanager.unregisterListener(accelerom.this,sensor);
-        Toast.makeText(this, "Accelerometer Un-resigtered ", Toast.LENGTH_SHORT).show();
+        sensormanager.unregisterListener( accelerom.this, sensor );
+        Toast.makeText( this, "Accelerometer Un-resigtered ", Toast.LENGTH_SHORT ).show();
     }
 }
 

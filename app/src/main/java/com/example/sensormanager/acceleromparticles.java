@@ -1,18 +1,16 @@
 package com.example.sensormanager;
 
 
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.BitmapFactory.Options;
-import android.graphics.Paint;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
@@ -23,26 +21,36 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
+
+import java.util.zip.Inflater;
 
 
 public class acceleromparticles extends Activity {
 
-    private SimulationView mSimulationView;
+    public SimulationView mSimulationView;
     private SensorManager mSensorManager;
     private PowerManager mPowerManager;
     private WindowManager mWindowManager;
     private Display mDisplay;
     private WakeLock mWakeLock;
+    public int  ui = 1 ;
 
     /** Called when the activity is first created. */
+    @SuppressLint("ResourceType")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Get an instance of the SensorManager
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        overridePendingTransition(R.anim.slide_in_right,  R.anim.slide_out_right);
 
         // Get an instance of the PowerManager
         mPowerManager = (PowerManager) getSystemService(POWER_SERVICE);
@@ -50,14 +58,46 @@ public class acceleromparticles extends Activity {
         // Get an instance of the WindowManager
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
+        mSimulationView = new SimulationView(getApplicationContext());
+//         Button b2 = new Button(this);
+//        b1.setPadding( 10,10,10,10 );
+//
+//        jfl.addView( b1 ,0);
+//
+//        jfl.addView( b2 ,1);
+//        b1.setText("Dynamic BUtton1 ");
+////
+////        b2.setText("Dynamic Button2");
+//        jfl.addView( mSimulationView,0 );
+//  bbb=  findViewById( R.id.button );
 
-        // Create a bright wake lock
-        //  mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, getClass()
+        //    fl.addView( mSimulationView );
+        setContentView( R.layout.dyn);
+        FrameLayout jfl = findViewById( R.id.fl );
 
-        // instantiate our simulation view and set it as the activity's content
-        mSimulationView = new SimulationView(this);
+        // added teh simulation view
+        jfl.addView( mSimulationView,0 );
+
+
+        //Creating Dynamic button and setting the
+        Button b1 = new Button(this);
+        b1.setLayoutParams( new LinearLayout.LayoutParams( 600,200 ) );
+        b1.setHeight( 100 );
+        b1.setWidth( 50 );
+        jfl.addView( b1 ,1);
+        b1.setText( "Dynamic button 2 Recreate activity " );
+        //Re creating teh Activity
+        b1.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View b1_listner) {
+                recreate();
+            }
+        } );
+
+
         mSimulationView.setBackgroundResource(R.drawable.wood);
-        setContentView(mSimulationView);
+       // setContentView(mSimulationView);
+
     }
 
     @Override
@@ -72,9 +112,11 @@ public class acceleromparticles extends Activity {
 
         // Start the simulation
         mSimulationView.startSimulation();
-        mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
+      //  mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
 
     }
+
+
 
     @Override
     protected void onPause() {
@@ -86,22 +128,18 @@ public class acceleromparticles extends Activity {
 
         // Stop the simulation
         mSimulationView.stopSimulation();
-
         // and release our wake-lock
         // mWakeLock.release();
     }
 
     class SimulationView extends FrameLayout implements SensorEventListener {
         // diameter of the balls in meters
-        private static final float sBallDiameter = 0.0005f;
+        private static final float sBallDiameter = 0.00395f;
         private static final float sBallDiameter2 = sBallDiameter * sBallDiameter;
-
         private final int mDstWidth;
         private final int mDstHeight;
-
         private Sensor mAccelerometer;
         private long mLastT;
-
         private float mXDpi;
         private float mYDpi;
         private float mMetersToPixelsX;
@@ -112,20 +150,23 @@ public class acceleromparticles extends Activity {
         private float mSensorY;
         private float mHorizontalBound;
         private float mVerticalBound;
-        private final ParticleSystem mParticleSystem;
+        public final ParticleSystem mParticleSystem;
         /*
          * Each of our particle holds its previous and current position, its
          * acceleration. for added realism each particle has its own friction
          * coefficient.
          */
+
+
+
         class Particle extends View {
-            private float mPosX = (float) Math.random();
-            private float mPosY = (float) Math.random();
+            private float mPosX = 0 ;//  nyy (float) Math.random();		private float mPosX = (float) Math.random();
+            private float mPosY = 0 ;// nyy (float) Math.random();
             private float mVelX;
             private float mVelY;
 
             public Particle(Context context) {
-                super(context);
+                super( context );
             }
 
             public Particle(Context context, AttributeSet attrs) {
@@ -143,20 +184,17 @@ public class acceleromparticles extends Activity {
 
             public void computePhysics(float sx, float sy, float dT) {
 
-                final float ax = -sx/35;  //viscosity changes
-                final float ay = -sy/35;
-
-                mPosX += mVelX * dT + ax * dT * dT ; //original /2
-                mPosY += mVelY * dT + ay * dT * dT ;
-
+                final float ax = -sx/2;  //viscosity changes
+                final float ay = -sy/2;
+                mPosX += mVelX * dT + ax * dT * dT /10; //original /2
+                mPosY += mVelY * dT + ay * dT * dT /10;
                 mVelX += ax * dT;
                 mVelY += ay * dT;
             }
 
-
             public void resolveCollisionWithBounds() {
-                final float xmax = mHorizontalBound;
-                final float ymax = mVerticalBound;
+                final float xmax =  mHorizontalBound; // nyy (float) Math.random();
+                final float ymax =  mVerticalBound;    //nyy (float) Math.random();
                 final float x = mPosX;
                 final float y = mPosY;
                 if (x > xmax) {
@@ -180,7 +218,7 @@ public class acceleromparticles extends Activity {
          * A particle system is just a collection of particles
          */
         class ParticleSystem {
-            static final int NUM_PARTICLES = 400;
+            static final int NUM_PARTICLES = 100;
             private Particle mBalls[] = new Particle[NUM_PARTICLES];
 
             ParticleSystem() {
@@ -189,14 +227,11 @@ public class acceleromparticles extends Activity {
                  */
                 for (int i = 0; i < mBalls.length; i++) {
                     mBalls[i] = new Particle(getContext());
-                    mBalls[i].setBackgroundResource(R.drawable.a);
-
+                    mBalls[i].setBackgroundResource(R.drawable.b);
 
                     mBalls[i].setLayerType(LAYER_TYPE_HARDWARE, null);
                     addView(mBalls[i], new ViewGroup.LayoutParams(mDstWidth, mDstHeight));
                 }
-
-
             }
 
             /*
@@ -251,8 +286,8 @@ public class acceleromparticles extends Activity {
                                  * add a little bit of entropy, after nothing is
                                  * perfect in the universe.
                                  */
-                                dx += ((float) Math.random() - 0.01f) * 0.0001f; // 0.05 changed to 0.01 will change the animation pattern and will
-                                dy += ((float) Math.random() - 0.01f) * 0.0001f; // 0.0001 chnaged to .001
+                                dx += ((float) Math.random() - 0.05f) * 0.0001f; // nyy 0.05 changed to 0.01 will change the animation pattern and will
+                                dy += ((float) Math.random() - 0.05f) * 0.0001f; // 0.0001 chnaged to .001
                                 dd = dx * dx + dy * dy;
                                 // simulate the spring
                                 final float d = (float) Math.sqrt(dd);
@@ -292,37 +327,44 @@ public class acceleromparticles extends Activity {
              * of the acceleration. As an added benefit, we use less power and
              * CPU resources.
              */
-            mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_GAME);
+            mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_STATUS_ACCURACY_HIGH);
+
+
         }
 
         public void stopSimulation() {
             mSensorManager.unregisterListener(this);
+            Toast.makeText( getApplicationContext(), "Accelerometer Disengaged", Toast.LENGTH_SHORT ).show();
+
         }
 
         public SimulationView(Context context) {
             super(context);
             mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
+
+
             DisplayMetrics metrics = new DisplayMetrics();
             getWindow().setFlags(
-                    WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED,
+                    WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
                     WindowManager.LayoutParams.FLAG_HARDWARE_ACCELERATED);
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
             mXDpi = metrics.xdpi;
             mYDpi = metrics.ydpi;
 
-            //this will reduce the size of the ball oroginal was 0.0254 changed t 0.0854
-            mMetersToPixelsX = mXDpi / 0.0254f;
-            mMetersToPixelsY = mYDpi / 0.0254f;
+            // nyy this will reduce the size of the ball oroginal was 0.0254 changed t 0.0854
+            mMetersToPixelsX = mXDpi / 0.08554f;
+            mMetersToPixelsY = mYDpi / 0.08554f;
 
             // rescale the ball so it's about 0.5 cm on screen
             mDstWidth = (int) (sBallDiameter * mMetersToPixelsX * 0.5f);
             mDstHeight = (int) (sBallDiameter * mMetersToPixelsY * 0.5f);
             mParticleSystem = new ParticleSystem();
 
-            Options opts = new Options();
-            opts.inDither = true;
-            opts.inPreferredConfig = Bitmap.Config.RGB_565;
+//            Options opts = new Options();
+//            opts.inDither = true;
+//            opts.inPreferredConfig = Bitmap.Config.RGB_565;
         }
 
         @Override
@@ -388,6 +430,7 @@ public class acceleromparticles extends Activity {
             final float xs = mMetersToPixelsX;
             final float ys = mMetersToPixelsY;
             final int count = particleSystem.getParticleCount();
+
             for (int i = 0; i < count; i++) {
                 /*
                  * We transform the canvas so that the coordinate system matches

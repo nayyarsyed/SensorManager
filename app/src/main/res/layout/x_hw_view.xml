@@ -4,33 +4,99 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hardware information of this mobile:"
-        android:textAlignment="center" />
+        android:layout_height="271dp">
 
-    <TextView
-        android:id="@+id/x_hw_tv"
+        <TextView
+            android:id="@+id/hw_info_frame_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#6200EA"
+            android:fontFamily="sans-serif-light"
+            android:text="Hardware Information "
+            android:textAlignment="viewEnd"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <ScrollView
+            android:id="@+id/sc_hw_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#97C40D">
+
+            <TextView
+                android:id="@+id/x_hw_tv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66FFFFFF"
+                android:clickable="false"
+                android:editable="false"
+                android:ellipsize="end"
+                android:enabled="true"
+                android:fadeScrollbars="true"
+                android:fontFamily="sans-serif"
+                android:isScrollContainer="true"
+                android:overScrollMode="always"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textAlignment="viewStart"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="14sp"
+                android:verticalScrollbarPosition="defaultPosition"
+                android:visibility="visible"
+                tools:visibility="visible">
+
+
+            </TextView>
+        </ScrollView>
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="532dp"
-        android:background="#66E2B6F5"
-        android:clickable="false"
-        android:editable="false"
-        android:ellipsize="end"
-        android:enabled="true"
-        android:fadeScrollbars="true"
-        android:fontFamily="sans-serif"
-        android:scrollbarStyle="insideInset"
-        android:scrollbars="vertical"
-        android:textAlignment="viewStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="12sp"
-        android:visibility="visible"
-        tools:visibility="visible">
+        android:layout_height="284dp">
 
+        <TextView
+            android:id="@+id/Cpu_info_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C51162"
+            android:text="Cpu Information (Sroll for more info)"
+            android:textAlignment="viewEnd"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
 
-    </TextView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="268dp">
+
+            <TextView
+                android:id="@+id/cpu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="left"
+                android:paddingStart="5dp"
+                android:paddingLeft="5dp"
+                android:paddingTop="17dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="5dp"
+                android:text="CPU Information Display Here"
+                android:textColor="@android:color/background_dark"
+                android:textSize="14sp" />
+        </ScrollView>
+    </FrameLayout>
 
 </LinearLayout>
