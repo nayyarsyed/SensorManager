@@ -11,10 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import static android.content.Context.ACTIVITY_SERVICE;
 
-
-@RequiresApi(api = Build.VERSION_CODES.N)
 public class memory_info_frag extends Fragment {
 
 

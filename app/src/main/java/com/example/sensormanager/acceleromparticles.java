@@ -21,6 +21,7 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -58,10 +59,31 @@ public class acceleromparticles extends Activity {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
         mSimulationView = new SimulationView(getApplicationContext());
+//         Button b2 = new Button(this);
+//        b1.setPadding( 10,10,10,10 );
+//
+//        jfl.addView( b1 ,0);
+//
+//        jfl.addView( b2 ,1);
+//        b1.setText("Dynamic BUtton1 ");
+////
+////        b2.setText("Dynamic Button2");
+//        jfl.addView( mSimulationView,0 );
+//  bbb=  findViewById( R.id.button );
+
         //    fl.addView( mSimulationView );
         setContentView( R.layout.dyn);
         FrameLayout jfl = findViewById( R.id.fl );
-        jfl.addView( mSimulationView );
+        jfl.addView( mSimulationView,0 );
+
+        Button b1 = new Button(this);
+        b1.setLayoutParams( new LinearLayout.LayoutParams( 300,100 ) );
+        b1.setHeight( 100 );
+        b1.setWidth( 50 );
+
+        jfl.addView( b1 ,1);
+        b1.setText( "Dynamicbutton" );
+
         mSimulationView.setBackgroundResource(R.drawable.wood);
        // setContentView(mSimulationView);
 
