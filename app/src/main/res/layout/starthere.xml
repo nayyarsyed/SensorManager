@@ -21,17 +21,18 @@
         android:paddingBottom="10dp"
         android:text="Quick info about the sensors :"
         android:textAlignment="center"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="342dp"
+        android:layout_width="match_parent"
         android:layout_height="76dp">
 
         <FrameLayout
             android:id="@+id/nyy"
-            android:layout_width="260dp"
-            android:layout_height="76dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_default2a"
 
             android:theme="@style/AlertDialog.AppCompat.Light">
 
@@ -83,8 +84,7 @@
             android:paddingBottom="10dp"
             android:text="TextView"
             android:textAlignment="center"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textSize="18sp" />
 
     </FrameLayout>
 
@@ -92,30 +92,20 @@
         android:layout_width="match_parent"
         android:layout_height="224dp">
 
-        <ScrollView
+        <ListView
+            android:id="@+id/xlv"
+            style="@android:style/Widget.DeviceDefault.Light.ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="153dp">
+            android:layout_height="match_parent"
+            android:background="@drawable/button_default3"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <ListView
-                    android:id="@+id/xlv"
-                    style="@android:style/Widget.Material.ListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingStart="10dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp">
-
-                </ListView>
-            </LinearLayout>
-        </ScrollView>
+        </ListView>
 
     </FrameLayout>
 

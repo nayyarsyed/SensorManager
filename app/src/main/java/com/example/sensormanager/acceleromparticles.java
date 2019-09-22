@@ -32,7 +32,6 @@ public class acceleromparticles extends Activity {
     private WindowManager mWindowManager;
     private Display mDisplay;
     private WakeLock mWakeLock;
-    public int  ui = 1 ;
 
     /** Called when the activity is first created. */
     @SuppressLint("ResourceType")

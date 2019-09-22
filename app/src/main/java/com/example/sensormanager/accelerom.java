@@ -9,23 +9,24 @@ import android.view.View;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class accelerom extends AppCompatActivity implements SensorEventListener {
 
     TextView x, y, z;
     Sensor sensor;
-    SensorManager sensormanager;
     Switch simpleSwitch1;
+    MainActivity ma= new MainActivity();
+    SensorManager sensormanager_accelerom = ma.mSensorManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_accelerom );
-        sensormanager = (SensorManager) getSystemService( SENSOR_SERVICE );
-        sensor = sensormanager.getDefaultSensor( Sensor.TYPE_ACCELEROMETER );
+        sensormanager_accelerom = (SensorManager) getSystemService( SENSOR_SERVICE );
+        sensor = sensormanager_accelerom.getDefaultSensor( Sensor.TYPE_ACCELEROMETER );
 
         x = (TextView) findViewById( R.id.x_x );
         y = (TextView) findViewById( R.id.x_y );
@@ -39,11 +40,12 @@ public class accelerom extends AppCompatActivity implements SensorEventListener 
                 String statusSwitch1;
                 if (simpleSwitch1.isChecked()) {
 
-                    sensormanager.registerListener( accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL );
+                    sensormanager_accelerom.registerListener( accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL );
                     Toast.makeText( accelerom.this, "Accelerometer Started", Toast.LENGTH_SHORT ).show();
                 } else {
                     Toast.makeText( accelerom.this, "Accelerometer stopped", Toast.LENGTH_SHORT ).show();
-                    sensormanager.unregisterListener( accelerom.this, sensor );
+                    sensormanager_accelerom.unregisterListener( accelerom.this, sensor );
+                    ma.mSimulationView.stopSimulation();
                 }
             }
         } );
@@ -64,19 +66,19 @@ public class accelerom extends AppCompatActivity implements SensorEventListener 
     @Override
     protected void onPause() {
         super.onPause();
-        sensormanager.unregisterListener( accelerom.this, sensor );
+        sensormanager_accelerom.unregisterListener( accelerom.this, sensor );
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        sensormanager.registerListener( accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL );
+        sensormanager_accelerom.registerListener( accelerom.this, sensor, SensorManager.SENSOR_DELAY_NORMAL );
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        sensormanager.unregisterListener( accelerom.this, sensor );
+        sensormanager_accelerom.unregisterListener( accelerom.this, sensor );
         Toast.makeText( this, "Accelerometer Un-resigtered ", Toast.LENGTH_SHORT ).show();
     }
 }

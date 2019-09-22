@@ -90,8 +90,8 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
                 SensorManager.SENSOR_DELAY_GAME);
         if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
-            x -=   (sensorEvent.values[0]/ 0.05f);
-            y +=  ( sensorEvent.values[1]/ 0.05f);
+            x -=   (sensorEvent.values[0]/ 0.15f);
+            y +=  ( sensorEvent.values[1]/ 0.15f);
 
 
 
@@ -188,41 +188,37 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
 //            }
 
 
-            rect.set(200,0,140,300);
-            rect2.set(250,250,350,350);
+            rect.set(0,0,400,100);
+        //    rect2.set(0,250,350,350);
 
             //   Log.d( "centerx", String.valueOf( rect.exactCenterX() ) );
 
 
             canvas.translate(x, y);
 
-//
-//            for (int i = 0; i < 2; i++) {
-//
-//            }
 
-            if (x >= getWidth()  ) {
-
-
-                x = 1 ;
-
-                Log.d( "rectx", String.valueOf( (x) ) );
+            for (int i = 0; i < 2; i++) {
 
             }
 
-            if (x <= 0 ){
+            if (x > canvas.getWidth()  ) {
 
-                x = getWidth();
+                x = 1-rect.width() ;
 
-                Log.d( "rectx", String.valueOf( (x) ) );
+            }
+
+            if (x <= 0 - rect.width() ){
+
+                x = canvas.getWidth();
+
+
             }
 
             if (y >= getHeight()) {
 
                 y = 1 ;
 
-                Log.d( "y", String.valueOf( (y) ) );
-                Log.d( "heigth", String.valueOf (getHeight())) ;
+
 
             }
 
@@ -230,7 +226,7 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
 
                 y = getHeight();
 
-                Log.d( "bbb", String.valueOf( (y) ) );
+
                 Log.d( "hh", String.valueOf( (getHeight())));
             }
 

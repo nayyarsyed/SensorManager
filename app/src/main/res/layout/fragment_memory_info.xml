@@ -8,7 +8,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@drawable/button_default2"
+        android:orientation="vertical"
+
+        >
 
         <TextView
             android:id="@+id/tm"
@@ -18,14 +21,14 @@
 
         <TextView
             android:id="@+id/am"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
-            android:layout_width="348dp"
+            android:layout_width="match_parent"
             android:layout_height="15dp"
             android:layout_weight="1"
             android:background="@drawable/redborders"
