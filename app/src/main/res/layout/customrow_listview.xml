@@ -7,12 +7,10 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#5C6BC0"
         android:fadingEdge="horizontal|vertical"
-        android:outlineAmbientShadowColor="#FF7043"
         android:text="TextView"
         android:textAlignment="viewStart"
-        android:textColor="#FFFFFF"
+        android:textColor="#6200EA"
         android:textSize="12sp"
         android:textStyle="bold"
         android:padding="10dp"
@@ -21,5 +19,9 @@
         android:paddingTop="10dp"
         android:paddingEnd="10dp"
         android:paddingRight="10dp"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="10dp" />
+
+    <!--        android:background="@drawable/custom_button"-->
+
+    />
 </LinearLayout>

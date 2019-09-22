@@ -1,14 +1,13 @@
 package com.example.sensormanager;
 
-import android.app.ActivityManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CpuUsageInfo;
-import android.os.HardwarePropertiesManager;
 import android.telephony.gsm.GsmCellLocation;
 import android.util.Log;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -54,7 +53,6 @@ public class hw extends AppCompatActivity {
             ex.printStackTrace();
         }
 
-        Log.d("pappu",Holder);
         cpu.setText(Holder);
         // hardware build information string building
         String details = "VERSION.RELEASE : " + Build.VERSION.RELEASE

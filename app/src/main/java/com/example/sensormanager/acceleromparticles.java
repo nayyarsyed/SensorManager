@@ -4,9 +4,7 @@ package com.example.sensormanager;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.BitmapFactory.Options;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -19,18 +17,11 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.Surface;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-
-import java.util.zip.Inflater;
 
 
 public class acceleromparticles extends Activity {
@@ -72,14 +63,13 @@ public class acceleromparticles extends Activity {
 //  bbb=  findViewById( R.id.button );
 
         //    fl.addView( mSimulationView );
+
+     // ===================
         setContentView( R.layout.dyn);
-        FrameLayout jfl = findViewById( R.id.fl );
-
-        // added teh simulation view
+       FrameLayout jfl = findViewById( R.id.fl );
+       // added teh simulation view
         jfl.addView( mSimulationView,0 );
-
-
-        //Creating Dynamic button and setting the
+      //Creating Dynamic button and setting the
         Button b1 = new Button(this);
         b1.setLayoutParams( new LinearLayout.LayoutParams( 600,200 ) );
         b1.setHeight( 100 );
@@ -94,7 +84,11 @@ public class acceleromparticles extends Activity {
             }
         } );
 
+ //===================================
 
+
+
+//============================
         mSimulationView.setBackgroundResource(R.drawable.wood);
        // setContentView(mSimulationView);
 

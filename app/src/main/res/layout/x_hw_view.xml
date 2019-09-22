@@ -63,7 +63,7 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="284dp">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/Cpu_info_heading"
@@ -78,7 +78,7 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="268dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/cpu"

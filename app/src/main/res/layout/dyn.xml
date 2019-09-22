@@ -9,8 +9,8 @@
 
     <FrameLayout
         android:id="@+id/fl"
-        android:layout_width="359dp"
-        android:layout_height="506dp"
+        android:layout_width="371dp"
+        android:layout_height="334dp"
 
         android:theme="@style/AlertDialog.AppCompat.Light">
 
