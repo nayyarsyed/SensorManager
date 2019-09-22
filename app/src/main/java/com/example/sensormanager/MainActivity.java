@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         jlv = findViewById( R.id.xlv );
         liststring = new ArrayList<String>();
         jlsr = sm.getSensorList( Sensor.TYPE_ALL );
-        sensorcount.setText( "Total Sensor(s) found : " + jlsr.size() );
+        sensorcount.setText( "Total Sensor(s)  found : " + jlsr.size() );
         adapter = new ArrayAdapter<>( MainActivity.this, R.layout.customrow_listview,
                 R.id.textView2, liststring );
         jlv.setAdapter( adapter );
