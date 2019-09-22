@@ -4,7 +4,14 @@
     xmlns:parent="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingStart="10dp"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="20dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="20dp"
+    >
 
 
     <TextView
@@ -26,9 +33,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="76dp">
+        android:layout_height="76dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="20dp">
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/nyy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,7 +50,7 @@
             android:theme="@style/AlertDialog.AppCompat.Light">
 
 
-        </FrameLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>
@@ -45,7 +58,14 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/custom_button">
+        android:background="@drawable/custom_button"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="20dp"
+        >
 
         <fragment
             android:id="@+id/fragment_acc_values_frag"
@@ -88,30 +108,9 @@
 
     </FrameLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="224dp">
-
-        <ListView
-            android:id="@+id/xlv"
-            style="@android:style/Widget.DeviceDefault.Light.ScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_default3"
-            android:paddingStart="10dp"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="10dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="10dp">
-
-        </ListView>
-
-    </FrameLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/xbt"
@@ -172,6 +171,32 @@
             android:textColor="#FFFFFF"
             android:textSize="10sp" />
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/button_default2a"
+        android:paddingBottom="50dp"
+
+        >
+
+        <ListView
+            android:id="@+id/xlv"
+            style="@android:style/Widget.DeviceDefault.Light.ScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_default2a"
+
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp">
+
+        </ListView>
+
+    </androidx.cardview.widget.CardView>
 
     <!--    <Button-->
 <!--        android:id="@+id/custom_button"-->

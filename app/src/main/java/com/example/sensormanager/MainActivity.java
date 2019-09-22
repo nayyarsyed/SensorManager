@@ -25,6 +25,7 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         overridePendingTransition(R.anim.slide_in_right,  R.anim.slide_out_right);
-
         setContentView( R.layout.starthere );
 
 
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         mSimulationView = new SimulationView(getApplicationContext());
 
         //setContentView( R.layout.dyn);
-        FrameLayout jfl = findViewById( R.id.nyy );
+        RelativeLayout jfl = findViewById( R.id.nyy );
         // added teh simulation view
 
         //Creating Dynamic button and setting the
@@ -78,8 +78,17 @@ public class MainActivity extends AppCompatActivity {
         b1.setTextSize( 05 );
         b1.setTextColor( Color.WHITE);
         b1.setBackgroundResource( R.color.colorAccent );
-        jfl.addView( b1 ,0);
         b1.setText( "Refresh " );
+        jfl.addView( b1 ,0);
+
+
+//        Button b2 = new Button(this);
+//        b2.setTextSize( 05 );
+//        b2.setTextColor( Color.WHITE);
+//        b2.setBackgroundResource( R.color.colorAccent );
+//        jfl.addView( b2 ,1);
+//        b2.setText( "2nd button  " );
+
 
         //========
 
