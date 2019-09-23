@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         b1.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View b1_listner) {
-                recreate();
+            recreate();
             }
         } );
 
