@@ -17,6 +17,10 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".temp"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".accelerom"
             android:screenOrientation="portrait" />
                 <activity

@@ -72,6 +72,14 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout jfl = findViewById( R.id.nyy );
         // added teh simulation view
 
+
+
+
+        RelativeLayout.LayoutParams b2_rl = new RelativeLayout.LayoutParams(
+                RelativeLayout.LayoutParams.WRAP_CONTENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        b2_rl.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+
         //Creating Dynamic button and setting the
         Button b1 = new Button(this);
         b1.setLayoutParams( new LinearLayout.LayoutParams( 80,80 ) );
@@ -79,22 +87,25 @@ public class MainActivity extends AppCompatActivity {
         b1.setTextColor( Color.WHITE);
         b1.setBackgroundResource( R.color.colorAccent );
         b1.setText( "Refresh " );
-        jfl.addView( b1 ,0);
+        jfl.addView( b1 );
 
 
-//        Button b2 = new Button(this);
-//        b2.setTextSize( 05 );
-//        b2.setTextColor( Color.WHITE);
-//        b2.setBackgroundResource( R.color.colorAccent );
-//        jfl.addView( b2 ,1);
-//        b2.setText( "2nd button  " );
+
+        Button b2 = new Button(this);
+        b2.setTextSize( 05 );
+        b2.setTextColor( Color.WHITE);
+        b2.setBackgroundResource( R.color.colorAccent );
+        b2.setText( "2nd button  " );
+        b2.setLayoutParams( b2_rl );
+        jfl.addView( b2 );
+
 
 
         //========
 
         //==========
 
-        jfl.addView( mSimulationView,1 );
+        jfl.addView( mSimulationView);
         //Re creating teh Activity
         b1.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -103,6 +114,14 @@ public class MainActivity extends AppCompatActivity {
             }
         } );
 
+        //stopping simulation
+        b2.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View b2_listner) {
+                mSimulationView.stopSimulation();
+
+            }
+        } );
         //===================================
 
 
@@ -182,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
         j_simple_acc_demo.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View j_simple_acc_demo_view) {
-                Intent intent_hw = new Intent( MainActivity.this, Accelerometer_nyy_demo.class );
+                Intent intent_hw = new Intent( MainActivity.this, temp.class );
                 startActivity( intent_hw );
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);            }
         } );

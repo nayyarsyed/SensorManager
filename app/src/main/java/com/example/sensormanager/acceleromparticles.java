@@ -21,6 +21,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
@@ -87,7 +88,12 @@ public class acceleromparticles extends Activity {
 
 
 
+
+
+
 //============================
+
+
         mSimulationView.setBackgroundResource(R.drawable.wood);
        // setContentView(mSimulationView);
 
