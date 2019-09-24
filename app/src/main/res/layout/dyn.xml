@@ -23,4 +23,5 @@
         android:layout_height="64dp"
         android:text="50 % for showing rest of the items." />
 
+
 </LinearLayout>

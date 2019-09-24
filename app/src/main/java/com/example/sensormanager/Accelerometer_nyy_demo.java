@@ -11,8 +11,11 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.InputType;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +30,9 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
     public  float y;
     public SensorManager sensorManager ;
     public Sensor s ;
+    private float speed;
+    private EditText speed_tv;
+    LinearLayout lal ;
 
     /** Called when the activity is first created. */
     @Override
@@ -34,16 +40,41 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
     {
         super.onCreate(savedInstanceState);
         // Get a reference to a SensorManager
+        setContentView(R.layout.lal);
+
+        lal = new LinearLayout( this );
+        lal = findViewById( R.id.xlal );
+
        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         s = sensorManager
                 .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         ll = new AnimationAct_layout_001(this);
         TextView message = new TextView(this  );
+
+       //////////////
+        speed_tv = findViewById( R.id.speed );
+        speed_tv.setInputType( InputType.TYPE_CLASS_NUMBER|InputType.TYPE_NUMBER_FLAG_DECIMAL);
+       /////////////////////////
+
         message.setText( "Tilt your phone to visualize the acceleormeter X and Y values" );
         addContentView( message,new LinearLayout.LayoutParams( 100,100 ) );
-        setContentView(ll);
+        ll.setLayoutParams( new LinearLayout.LayoutParams( 900,900 ) );
+      //  lal.setLayoutParams( new LinearLayout.LayoutParams( 500,500 ) );
 
+        lal.addView( ll );
+        speed_tv.setText( "0.35" );
+        speed = 0.35f;
 
+        Button xspeed_btn = findViewById( R.id.speed_Btn );
+
+        xspeed_btn.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View xspeed_btn_view) {
+                speed = Float.valueOf(speed_tv.getText().toString());
+                ll.invalidate();
+
+            }
+        } );
 
         //  setContentView(R.layout.activity_main);
 
@@ -90,8 +121,9 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
                 SensorManager.SENSOR_DELAY_GAME);
         if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
-            x -=   (sensorEvent.values[0]/ 0.15f);
-            y +=  ( sensorEvent.values[1]/ 0.15f);
+
+            x -=   (sensorEvent.values[0]/ speed);
+            y +=  ( sensorEvent.values[1]/ speed);
 
 
 
@@ -135,19 +167,24 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
 
 
 
+
         }
 
         public void drawtext (String s,Canvas cn) {
 
-
-            LinearLayout layout = new LinearLayout(getContext());
-            TextView ctextView = new TextView(getContext());
-            ctextView.setVisibility(View.VISIBLE);
-            ctextView.setText(s);
-            layout.addView(ctextView);
-            layout.measure(cn.getWidth(), cn.getHeight());
-            layout.layout(440, 400, cn.getWidth(), cn.getHeight());
-            layout.draw(cn);
+// To add the text in a canvas attached it to the moving red box
+//            LinearLayout layout = new LinearLayout(getContext());
+//            Button bbb= new Button( getContext() );
+//            EditText ctextView = new EditText(getContext());
+//            ctextView.setVisibility(View.VISIBLE);
+//            ctextView.setText(s);
+//            layout.addView(ctextView);
+//            bbb.setVisibility(View.VISIBLE);
+//            bbb.setText(s);
+//            layout.addView(bbb);
+//            layout.measure(cn.getWidth(), cn.getHeight());
+//            layout.layout(440, 400, cn.getWidth(), cn.getHeight());
+//            layout.draw(cn);
 
         }
 
@@ -163,17 +200,16 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
             redpaint.setColor( Color.RED );
             bluepaint.setColor( Color.BLUE );
 
-
             RectF rect,rect2;
             rect = new RectF();
-            rect2 = new RectF();
+            //rect2 = new RectF();
 
 
 
 // To place the text view somewhere specific:
 //canvas.translate(0, 0);
 
-            drawtext( "Please Tilt your Phone ",canvas );
+            drawtext( "Please Tilt tttttt your Phone ",canvas );
 
 //            RectF rectf[] = new RectF[10];
 
@@ -186,7 +222,6 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
 //                rectf[k].set( y-50,y+70,y,y+10 );
 //
 //            }
-
 
             rect.set(0,0,400,100);
         //    rect2.set(0,250,350,350);
@@ -227,13 +262,13 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
                 y = getHeight();
 
 
-                Log.d( "hh", String.valueOf( (getHeight())));
             }
 
             canvas.drawRect( rect,redpaint );
-            canvas.drawRect( rect2,bluepaint );
+           // canvas.drawRect( rect2,bluepaint );
             textpaint.setTextSize(20);
             canvas.drawText("Please Tilt your Phone Slightly ", rect.centerX(), rect.centerY(), textpaint);
+
 //
 //            for (int k=0; k < rectf.length;k++) {
 //

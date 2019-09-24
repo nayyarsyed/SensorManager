@@ -7,12 +7,11 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/xpc"
-        android:layout_width="293dp"
-        android:layout_height="149dp" />
+        android:layout_width="262dp"
+        android:layout_height="310dp" />
 
 
-
-<!--        <TextView-->
+    <!--        <TextView-->
 <!--            android:id="@+id/tm"-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"-->
