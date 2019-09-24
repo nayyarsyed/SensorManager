@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     List<Sensor> jlsr;
     ArrayList<String> liststring;
     ArrayAdapter<String> adapter;
-    Button jbt,jbt_hw,j_simple_acc_demo;
+    Button jbt,jbt_hw,j_simple_acc_demo,j_btn_livegraph;
 
     public SimulationView mSimulationView;
     public SensorManager mSensorManager;
@@ -93,8 +93,10 @@ public class MainActivity extends AppCompatActivity {
 
         Button b2 = new Button(this);
         b2.setTextSize( 05 );
+        b2.setLayoutParams( new LinearLayout.LayoutParams( 80,80 ) );
+
         b2.setTextColor( Color.WHITE);
-        b2.setBackgroundResource( R.color.colorAccent );
+        b2.setBackgroundResource( R.color.colorPrimaryDark );
         b2.setText( "2nd button  " );
         b2.setLayoutParams( b2_rl );
         jfl.addView( b2 );
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
      //   jbt = findViewById( R.id.xbt );
         jbt = findViewById( R.id.xbt );
         jbt_hw = findViewById( R.id.x_hw_btn );
+        j_btn_livegraph= findViewById( R.id.x_btn_livegraph );
         j_simple_acc_demo = findViewById( R.id.simple_acc_move_btn );
         sensorcount = findViewById( R.id.x_tv_sensorcount );
         jlv = findViewById( R.id.xlv );
@@ -201,11 +204,19 @@ public class MainActivity extends AppCompatActivity {
         j_simple_acc_demo.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View j_simple_acc_demo_view) {
-                Intent intent_hw = new Intent( MainActivity.this, temp.class );
+                Intent intent_hw = new Intent( MainActivity.this, Accelerometer_nyy_demo.class );
                 startActivity( intent_hw );
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);            }
         } );
 
+
+        j_btn_livegraph.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View j_simple_acc_demo_view) {
+                Intent intent_hw = new Intent( MainActivity.this, Live_graph_aclmtr.class );
+                startActivity( intent_hw );
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);            }
+        } );
 
     }
 
@@ -329,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
          */
         class ParticleSystem {
             static final int NUM_PARTICLES = 200;
-            private Particle mBalls[] = new Particle[NUM_PARTICLES];
+            private Particle mBalls[] = new Particle[20];
 
             ParticleSystem() {
                 /*
@@ -338,11 +349,10 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < mBalls.length; i++) {
                     mBalls[i] = new Particle(getContext());
                     mBalls[i].setBackgroundResource(R.drawable.ball2);
-
                     mBalls[i].setLayerType(LAYER_TYPE_HARDWARE, null);
                     addView(mBalls[i], new LayoutParams(mDstWidth, mDstHeight));
-
                 }
+
 
 
             }

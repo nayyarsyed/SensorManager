@@ -60,16 +60,15 @@
     </LinearLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="374dp"
+        android:layout_height="76dp"
         android:background="@drawable/custom_button"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
         android:paddingRight="10dp"
-        android:paddingBottom="20dp"
-        >
+        android:paddingBottom="20dp">
 
         <fragment
             android:id="@+id/fragment_acc_values_frag"
@@ -176,11 +175,12 @@
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="10sp" />
+
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="125dp"
         android:background="@drawable/button_default2a"
         android:paddingBottom="50dp"
 
@@ -190,7 +190,7 @@
             android:id="@+id/xlv"
             style="@android:style/Widget.DeviceDefault.Light.ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="203dp"
             android:background="@drawable/button_default2a"
 
             android:paddingStart="10dp"
@@ -203,6 +203,26 @@
         </ListView>
 
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/x_btn_livegraph"
+        style="@style/Widget.AppCompat.Button.Small"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_default"
+
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:stateListAnimator="@android:anim/slide_in_left"
+        android:text="live graph"
+        android:textAlignment="center"
+        android:textColor="@color/common_google_signin_btn_text_dark_pressed"
+        android:textSize="10sp" />
 
     <!--    <Button-->
 <!--        android:id="@+id/custom_button"-->

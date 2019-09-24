@@ -5,35 +5,35 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/xpc"
+        android:layout_width="293dp"
+        android:layout_height="149dp" />
 
-        >
 
-        <TextView
-            android:id="@+id/tm"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
 
-        <TextView
-            android:id="@+id/am"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+<!--        <TextView-->
+<!--            android:id="@+id/tm"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/hello_blank_fragment" />-->
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="15dp"
-            android:layout_weight="1"
-            android:background="@drawable/redborders"
-            android:max="10"
-            android:progress="0"
-            android:progressTint="#651FFF" />
+<!--        <TextView-->
+<!--            android:id="@+id/am"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="TextView" />-->
+
+<!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="15dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/redborders"-->
+<!--            android:max="10"-->
+<!--            android:progress="0"-->
+<!--            android:progressTint="#651FFF" />-->
+
+
     </LinearLayout>
-
-</LinearLayout>

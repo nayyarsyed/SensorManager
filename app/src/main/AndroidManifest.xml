@@ -17,6 +17,11 @@
             android:screenOrientation="portrait" />
 
         <activity
+            android:name=".Live_graph_aclmtr"
+            android:screenOrientation="portrait" />
+
+
+        <activity
             android:name=".temp"
             android:screenOrientation="portrait" />
 
