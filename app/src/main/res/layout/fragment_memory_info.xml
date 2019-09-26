@@ -1,38 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_collapseMode="parallax"
+    app:layout_scrollFlags="scroll">
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/xpc"
-        android:layout_width="262dp"
-        android:layout_height="310dp" />
+        android:layout_width="313dp"
+        android:layout_height="226dp" />
 
-
-    <!--        <TextView-->
-<!--            android:id="@+id/tm"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:text="@string/hello_blank_fragment" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/am"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="TextView" />-->
-
-<!--        <ProgressBar-->
-<!--            android:id="@+id/progressBar"-->
-<!--            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="15dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/redborders"-->
-<!--            android:max="10"-->
-<!--            android:progress="0"-->
-<!--            android:progressTint="#651FFF" />-->
-
-
-    </LinearLayout>
+</LinearLayout>

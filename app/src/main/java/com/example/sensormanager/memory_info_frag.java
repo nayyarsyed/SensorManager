@@ -76,31 +76,32 @@ public class memory_info_frag extends Fragment {
 //        pb.setProgress( (int)availableMemory_in_gb );
 //=====================================================
         pc= getView().findViewById (R.id.xpc );
-        pc.setUsePercentValues(  true );
-        pc.getDescription().setEnabled( false );
+//        pc.setUsePercentValues(  true );
+//        pc.getDescription().setEnabled( false );
+//        pc.setExtraOffsets( 5,10,5,5 );
+//        pc.setDragDecelerationFrictionCoef( 0.5f );
 
-        pc.setExtraOffsets( 5,10,5,5 );
-        pc.setDragDecelerationFrictionCoef( 0.5f );
-
-        pc.setDrawHoleEnabled( true );
+//        pc.setDrawHoleEnabled( true );
 //        pc.setHoleColor( Color.RED );
-        pc.setTransparentCircleRadius( 31f );
+//        pc.setHoleRadius( .3f );
+//        pc.setTransparentCircleRadius( .3f );
 
         ArrayList<PieEntry> vals = new ArrayList<>( );
-        vals.add (new PieEntry( Float.parseFloat( formated_total_memory ),"Total Ram"));
-        vals.add (new PieEntry( Float.parseFloat( formated_avl_mem ),"Available Ram"));
+        vals.add (new PieEntry( Float.parseFloat( formated_total_memory ), ""));
+        vals.add (new PieEntry( Float.parseFloat( formated_avl_mem ),""));
 
-        PieDataSet dataSet = new PieDataSet( vals,"Memory" );
+        PieDataSet dataSet = new PieDataSet( vals,"Total Memory / Available Memory" );
         dataSet.setSliceSpace(5f);
         dataSet.setSelectionShift( 5f );
-        dataSet.setColors( ColorTemplate.COLORFUL_COLORS );
+        dataSet.setColors( ColorTemplate.MATERIAL_COLORS );
 
         PieData data = new PieData( dataSet );
-        data.setValueTextSize( 5f );
-        data.setValueTextColor( Color.BLUE );
+        data.setValueTextSize( 12f );
+
+        data.setValueTextColor( Color.WHITE );
 
         pc.setData( data );
-
+        pc.animateY(1000);
 
     }
 
