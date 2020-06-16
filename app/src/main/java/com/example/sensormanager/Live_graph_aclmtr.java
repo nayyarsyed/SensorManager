@@ -13,6 +13,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -46,7 +47,25 @@ public class Live_graph_aclmtr extends AppCompatActivity implements SensorEventL
         mChart = findViewById(R.id.chart1a );
 
         // enable description text
-        mChart.getDescription().setEnabled(false);
+        mChart.getDescription().setEnabled(true);
+
+        Description description = new Description();
+        description.setText("");
+        mChart.setDescription(description);
+        mChart.getDescription().setText("abcd");
+        description.setPosition(0,0);
+
+
+
+//        mChart.getDescription().setText("Description of my chart");
+//        Description des = mChart.getDescription();
+//        mChart.setContentDescription(null);
+//        mChart.setDescription(null);
+//        des.setEnabled(false);
+
+
+        mChart.getLegend().setEnabled(true);
+
 
         // enable touch gestures
         mChart.setTouchEnabled(true);
@@ -91,6 +110,11 @@ public class Live_graph_aclmtr extends AppCompatActivity implements SensorEventL
         YAxis rightAxis = mChart.getAxisRight();
         rightAxis.setEnabled(false);
 
+
+
+//        Description des = null;
+//        des.setText("This");
+//        mChart.setDescription(des);
         mChart.getAxisLeft().setDrawGridLines(false);
         mChart.getXAxis().setDrawGridLines(false);
         mChart.setDrawBorders(false);

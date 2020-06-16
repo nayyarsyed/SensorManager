@@ -23,5 +23,12 @@
         android:layout_height="64dp"
         android:text="50 % for showing rest of the items." />
 
+    <FrameLayout
+        android:id="@+id/tfl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
 
 </LinearLayout>

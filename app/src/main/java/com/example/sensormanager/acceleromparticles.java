@@ -28,6 +28,7 @@ import android.widget.Toast;
 public class acceleromparticles extends Activity {
 
     public SimulationView mSimulationView;
+    public SimulationView sm2;
     private SensorManager mSensorManager;
     private PowerManager mPowerManager;
     private WindowManager mWindowManager;
@@ -50,6 +51,7 @@ public class acceleromparticles extends Activity {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mDisplay = mWindowManager.getDefaultDisplay();
         mSimulationView = new SimulationView(getApplicationContext());
+        sm2 = new SimulationView(getApplicationContext());
 //         Button b2 = new Button(this);
 //        b1.setPadding( 10,10,10,10 );
 //
@@ -67,14 +69,19 @@ public class acceleromparticles extends Activity {
      // ===================
         setContentView( R.layout.dyn);
        FrameLayout jfl = findViewById( R.id.fl );
-       // added teh simulation view
-        jfl.addView( mSimulationView,0 );
-      //Creating Dynamic button and setting the
+        FrameLayout tfl = findViewById( R.id.tfl );
+
+        // added teh simulation view
+        jfl.addView( mSimulationView );
+        tfl.addView( sm2);
+
+        //Creating Dynamic button and setting the
         Button b1 = new Button(this);
         b1.setLayoutParams( new LinearLayout.LayoutParams( 600,200 ) );
         b1.setHeight( 100 );
         b1.setWidth( 50 );
-        jfl.addView( b1 ,1);
+        jfl.addView( b1 );
+
         b1.setText( "Dynamic button 2 Recreate activity " );
         //Re creating teh Activity
         b1.setOnClickListener( new View.OnClickListener() {
@@ -95,7 +102,9 @@ public class acceleromparticles extends Activity {
 
 
         mSimulationView.setBackgroundResource(R.drawable.wood);
-       // setContentView(mSimulationView);
+        sm2.setBackgroundResource(R.drawable.wood);
+
+        // setContentView(mSimulationView);
 
     }
 
@@ -111,6 +120,7 @@ public class acceleromparticles extends Activity {
 
         // Start the simulation
         mSimulationView.startSimulation();
+        sm2.startSimulation();
       //  mSimulationView.setLayoutParams(new FrameLayout.LayoutParams(700, 300));
 
     }
@@ -127,6 +137,7 @@ public class acceleromparticles extends Activity {
 
         // Stop the simulation
         mSimulationView.stopSimulation();
+        sm2.stopSimulation();
         // and release our wake-lock
         // mWakeLock.release();
     }

@@ -19,12 +19,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:text="Enter Speed" />
 
     <Button
         android:id="@+id/speed_Btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buttonspeed" />
+        android:foregroundTint="#03A9F4"
+        android:text="Change Speed"
+        android:textSize="12sp" />
 
 </LinearLayout>

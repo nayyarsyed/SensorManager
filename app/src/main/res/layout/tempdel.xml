@@ -20,6 +20,7 @@
         android:layout_gravity="center"
 
 
+        android:background="@drawable/button_default3"
         android:padding="10dp"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
@@ -37,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
+        android:background="@drawable/button_pressed"
         android:padding="10dp"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
@@ -48,11 +50,13 @@
         android:textAlignment="center"
         android:textSize="18sp" />
 
+
     <RelativeLayout
         android:id="@+id/nyy"
         android:layout_width="374dp"
         android:layout_height="34dp"
 
+        android:background="@drawable/acustomborderforlayout"
         android:theme="@style/AlertDialog.AppCompat.Light">
 
 
@@ -61,14 +65,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="76dp"
+        android:background="@drawable/button_default2"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="20dp"
 
-        >
+        android:paddingRight="10dp"
+        android:paddingBottom="20dp">
 
 
     </LinearLayout>
@@ -113,6 +117,7 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:background="@drawable/button_default"
             android:padding="10dp"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
@@ -124,17 +129,17 @@
             android:text="Accelerometer Demo"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="10sp"
 
-            />
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/x_hw_btn"
             style="@android:style/Widget.DeviceDefault.Light.Button.Borderless.Small"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:padding="10dp"
+            android:background="@drawable/button_default"
 
+            android:padding="10dp"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -150,8 +155,9 @@
             style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:padding="10dp"
+            android:background="@drawable/button_default"
 
+            android:padding="10dp"
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -178,8 +184,8 @@
             android:id="@+id/xlv"
             style="@android:style/Widget.DeviceDefault.Light.ScrollView"
             android:layout_width="match_parent"
-            android:layout_height="203dp"
-            android:background="@drawable/button_default2a"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_default"
 
             android:paddingStart="10dp"
             android:paddingLeft="10dp"
@@ -198,6 +204,7 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
 
+        android:background="@drawable/button_default"
         android:padding="10dp"
         android:paddingStart="10dp"
         android:paddingLeft="10dp"
@@ -210,12 +217,6 @@
         android:textAlignment="center"
         android:textColor="@color/common_google_signin_btn_text_dark_pressed"
         android:textSize="10sp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
 
     <!--    <Button-->
     <!--        android:id="@+id/custom_button"-->

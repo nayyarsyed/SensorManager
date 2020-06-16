@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -12,8 +13,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -44,6 +45,7 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
 
         lal = new LinearLayout( this );
         lal = findViewById( R.id.xlal );
+//        lal.setLayoutParams(new LinearLayout.LayoutParams(200,200));
 
        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         s = sensorManager
@@ -57,12 +59,12 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
        /////////////////////////
 
         message.setText( "Tilt your phone to visualize the acceleormeter X and Y values" );
-        addContentView( message,new LinearLayout.LayoutParams( 100,100 ) );
+        addContentView( message,new LinearLayout.LayoutParams( 600,100 ) );
         ll.setLayoutParams( new LinearLayout.LayoutParams( 900,900 ) );
       //  lal.setLayoutParams( new LinearLayout.LayoutParams( 500,500 ) );
 
         lal.addView( ll );
-        speed_tv.setText( "0.35" );
+        speed_tv.setText( "0.9" );
         speed = 0.35f;
 
         Button xspeed_btn = findViewById( R.id.speed_Btn );
@@ -200,9 +202,9 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
             redpaint.setColor( Color.RED );
             bluepaint.setColor( Color.BLUE );
 
-            RectF rect,rect2;
-            rect = new RectF();
-            //rect2 = new RectF();
+            Rect rect,rect2;
+            rect = new Rect();
+            rect2 = new Rect(1,1,100,100);
 
 
 
@@ -223,18 +225,19 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
 //
 //            }
 
-            rect.set(0,0,400,100);
-        //    rect2.set(0,250,350,350);
+            rect.set(0,0,99,140);
+            rect2.set(0,0,200,240);
 
             //   Log.d( "centerx", String.valueOf( rect.exactCenterX() ) );
 
 
             canvas.translate(x, y);
+            if (rect.intersect(rect2)) {
 
-
-            for (int i = 0; i < 2; i++) {
-
+                Log.d("tttt", "collide");
             }
+
+
 
             if (x > canvas.getWidth()  ) {
 
@@ -265,9 +268,20 @@ public class Accelerometer_nyy_demo extends Activity implements SensorEventListe
             }
 
             canvas.drawRect( rect,redpaint );
+            rect2.set(100,100,100,100);
+            canvas.drawRect( rect2,redpaint );
+
+            canvas.drawRect( rect,redpaint );
+
+            canvas.drawCircle(x, y, 10f, redpaint);
+            canvas.drawCircle(x+100, y+50, 5, redpaint);
+            canvas.drawCircle(x-100, y-50, 25, redpaint);
+            canvas.drawCircle(x+150, y+70, 15, redpaint);
+
+            canvas.drawRect(rect2,bluepaint);
            // canvas.drawRect( rect2,bluepaint );
             textpaint.setTextSize(20);
-            canvas.drawText("Please Tilt your Phone Slightly ", rect.centerX(), rect.centerY(), textpaint);
+           // canvas.drawText("Please Tilt your Phone Slightly ", rect.centerX(), rect.centerY(), textpaint);
 
 //
 //            for (int k=0; k < rectf.length;k++) {

@@ -16,60 +16,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
-        android:text="Turn On / Off" />
+        android:text="Accelerometer On / Off"
+        android:textColorLink="#FF5722" />
 
-    <TableLayout
+    <TextView
+        android:id="@+id/x_x"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#B08EEC"
+        android:text="TextView"
+        android:textAlignment="center" />
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/x_y"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#CDDC39"
+        android:text="TextView"
+        android:textAlignment="center" />
 
-        </TableRow>
-
-        <TableRow
-            style="@style/AppTheme"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/x_x"
-                android:layout_width="401dp"
-                android:layout_height="wrap_content"
-                android:background="#B08EEC"
-                android:text="TextView"
-                android:textAlignment="center" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/x_y"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="18dp"
-                android:background="#CDDC39"
-                android:text="TextView"
-                android:textAlignment="center" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="48dp">
-
-            <TextView
-                android:id="@+id/x_z"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="#00BCD4"
-                android:text="TextView"
-                android:textAlignment="center" />
-        </TableRow>
-    </TableLayout>
+    <TextView
+        android:id="@+id/x_z"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00BCD4"
+        android:text="TextView"
+        android:textAlignment="center" />
 
 </LinearLayout>
 
