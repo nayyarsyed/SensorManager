@@ -23,9 +23,10 @@
 
             <TextView
                 android:id="@+id/x_tv_sensorcount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="10dp"
+                android:layout_height="50dp"
 
+                android:layout_weight="50"
                 android:padding="10dp"
                 android:paddingStart="10dp"
                 android:paddingLeft="10dp"
@@ -34,7 +35,8 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:text="TextView"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
+                android:textColor="#FF5722"
                 android:textSize="18sp" />
 
             <TextView
@@ -52,7 +54,8 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:text="Quick info about the sensors :"
-                android:textAlignment="center"
+                android:textAlignment="viewStart"
+                android:textColor="#3F51B5"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </TableRow>
@@ -91,8 +94,8 @@
             <fragment
                 android:id="@+id/fragment"
                 android:name="com.example.sensormanager.memory_info_frag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
                 parent:layout="@layout/fragment_memory_info" />
         </TableRow>
 
@@ -109,6 +112,7 @@
                     style="@style/Widget.AppCompat.Button.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
+                    android:background="@drawable/custom_button"
                     android:padding="10dp"
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
@@ -120,17 +124,17 @@
                     android:text="Accelerometer Demo"
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
-                    android:textSize="10sp"
 
-                    />
+                    android:textSize="10sp" />
 
                 <Button
                     android:id="@+id/x_hw_btn"
                     style="@style/Widget.AppCompat.Button.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:padding="10dp"
+                    android:background="@drawable/button_default"
 
+                    android:padding="10dp"
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
@@ -146,8 +150,9 @@
                     style="@style/Widget.AppCompat.Button.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:padding="10dp"
+                    android:background="@drawable/button_default"
 
+                    android:padding="10dp"
                     android:paddingStart="10dp"
                     android:paddingLeft="10dp"
                     android:paddingTop="10dp"
